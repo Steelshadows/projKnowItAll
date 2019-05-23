@@ -1,0 +1,15 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+main {
+    margin-top: 60px;
+}
+.main-heading {
+    text-align: center;
+}
