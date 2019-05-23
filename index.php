@@ -38,6 +38,23 @@
       </div>
       <div class="homeline"></div>
       <p class="homep">Recente weetjes</p>
+      <div class="homecontainer homecontcolumn">
+        <div class="homecontrow">
+          <img class="homeimgbot" src="img/placeholder.png">
+          <p>Titel</p>
+          <p class="homeweetje">Content</p>
+        </div>
+        <div class="homecontrow">
+          <img class="homeimgbot" src="img/placeholder.png">
+          <p>Titel</p>
+          <p class="homeweetje">Content</p>
+        </div>
+        <div class="homecontrow">
+          <img class="homeimgbot" src="img/placeholder.png">
+          <p>Titel</p>
+          <p class="homeweetje">Content</p>
+        </div>
+      </div>
     </main>
 
 <?php include "footer.php"; ?>

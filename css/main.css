@@ -22,25 +22,27 @@ body {
 }
 .homeimg1{
   position: relative;
-    top: 20px;
-  width: 500px;
+    top: 4%;
+  width: 35%;
+  height: 88%
 }
 .homeimg2{
   position: relative;
-    top: 20px;
-    left: 50px;
-  width: 400px;
+    top: 4%;
+    left: 4%;
+  width: 20%;
+  height: 88%;
 }
 .div1{
-  width: 700px;
-  height: 500px;
+  width: 45%;
+  height: 90%;
   border: 1px solid;
 }
 .topweetjes{
   position: relative;
-    left: 100px;
-  height: 500px;
-  width: 200px;
+    left: 8%;
+  height: 90%;
+  width: 10%;
   border: 1px solid;
 }
 .homeline{
@@ -53,5 +55,27 @@ body {
 }
 .homep{
   position: relative;
-    left: 48vw;
+    left: 46vw;
+}
+.homeimgbot{
+  margin-right: 15px;
+  width: 40%;
+  height: 80%;
+}
+.homecontcolumn{
+  position: relative;
+    left: 25%;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.homecontrow{
+  display: flex;
+  height: 30%;
+  width: 50%;
+  flex-direction: row;
+}
+.homeweetje{
+  position: relative;
+    top: 40px;
+    right: 30px;
 }
