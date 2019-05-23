@@ -24,7 +24,20 @@
 <?php include "header.php"; ?>
 
     <main>
-        <h1 class="display-1 main-heading">Main Content</h1>
+        <!-- <h1 class="display-1 main-heading">Main Content</h1> -->
+      <div class="homecontainer">
+        <img class="homeimg1" src="img/placeholder.png">
+        <img class="homeimg2" src="img/placeholder.png">
+      </div>
+      <div class="homecontainer">
+        <div class="div1">
+        </div>
+        <div class="topweetjes">
+          <p>Top 10 Weetjes</p>
+        </div>
+      </div>
+      <div class="homeline"></div>
+      <p class="homep">Recente weetjes</p>
     </main>
 
 <?php include "footer.php"; ?>

@@ -1,4 +1,5 @@
 html {
+    overflow-x: hidden;
     position: relative;
     min-height: 100%;
 }
@@ -7,9 +8,50 @@ body {
     margin-bottom: 60px;
 }
 
-main {
-    margin-top: 60px;
-}
 .main-heading {
     text-align: center;
+}
+.homecontainer{
+  margin-top: 60px;
+  width: 100vw;
+  height: 70vh;
+  /* border: 1px solid; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.homeimg1{
+  position: relative;
+    top: 20px;
+  width: 500px;
+}
+.homeimg2{
+  position: relative;
+    top: 20px;
+    left: 50px;
+  width: 400px;
+}
+.div1{
+  width: 700px;
+  height: 500px;
+  border: 1px solid;
+}
+.topweetjes{
+  position: relative;
+    left: 100px;
+  height: 500px;
+  width: 200px;
+  border: 1px solid;
+}
+.homeline{
+  opacity: 0.2;
+  position: relative;
+    left: 5vw;
+  border-top: 2px solid;
+  width: 90vw;
+  margin-bottom: 10px;
+}
+.homep{
+  position: relative;
+    left: 48vw;
 }
