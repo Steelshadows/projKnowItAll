@@ -10,12 +10,13 @@ if (!$conn) {
 }
 
 if(isset($_POST['submitsignup'])){
-    $password = base64_encode(htmlspecialchars($_POST['password']));
-    $passwordCheck = base64_encode(htmlspecialchars($_POST['passwordCheck']));
+    $password = $_POST['password'];
+    $passwordCheck = $_POST['password'];
     $username =     htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
 
     if($password == $passwordCheck) {
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
         $sql = '
         INSERT INTO `knowitall_gebruikers` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES (?, ?, ?)
         ';
@@ -37,25 +38,29 @@ if(isset($_POST['submitsignup'])){
         while($row = $result->fetch_assoc()) {
             $UID = (int) $row['gebruiker_ID'];
         }
-
+        $_SESSION['user_ID'] = $UID;
     }
-    $_SESSION['user_ID'] = $UID;
 }
 if(isset($_POST['submitlogin'])){
-    $password = base64_encode(htmlspecialchars($_POST['password']));
+//    $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
+    $password = $_POST['password'];
 //    $username =     htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
-    $loginCheckSQL='SELECT `email`, `wachtwoord`, `gebruiker_ID` FROM `knowitall_gebruikers`';
+    $loginCheckSQL='SELECT `email`, `wachtwoord`, `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
 //        echo $UIDcheckSQL;
     $result = $conn->query($loginCheckSQL);
     while($row = $result->fetch_assoc()) {
         $check['EM'] = $row['email'];
         $check['PW'] = $row['wachtwoord'];
-//        var_dump($row);
-        if ($check['EM'] == $email&&$check['PW'] == $password){
+//        var_dump($check['PW'], $password, password_verify($password,$check['PW']));
+        if ($check['EM'] == $email&&password_verify($password,$check['PW'])){
             echo 'login successfull';
             $_SESSION['user_ID'] = $row['gebruiker_ID'];
-        }
+        };
+    };
+    if(!isset($_SESSION['user_ID'])){
+//        if(isset($_SESSION['user_ID'])){session_destroy();}
+        echo 'login mislukt';
     }
 }
 if(isset($_SESSION['user_ID'])){

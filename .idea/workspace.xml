@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b709da1-5ab1-4889-9737-67a11f9bc7f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+    <list default="true" id="f6f85cf4-f03e-4f7c-9840-fd7536f9a1b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/login/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,35 +15,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/login.php">
+        <entry file="file://$PROJECT_DIR$/weetjes stuuren/posten.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="54" column="85" lean-forward="true" selection-start-line="54" selection-start-column="85" selection-end-line="54" selection-end-column="85" />
+            <state relative-caret-position="531">
+              <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>var</find>
-      <find>base</find>
-      <find>base64_encode(</find>
-      <find>PASSWORD_DEFAULT</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/weetjes stuuren/login.php" />
+        <option value="$PROJECT_DIR$/weetjes stuuren/posten.php" />
       </list>
     </option>
   </component>
@@ -50,19 +54,38 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="460" />
-    <option name="y" value="-33" />
-    <option name="width" value="1537" />
+    <option name="x" value="376" />
+    <option name="y" value="191" />
+    <option name="width" value="1539" />
     <option name="height" value="865" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="projKnowItAll" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projKnowItAll" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projKnowItAll" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projKnowItAll" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projKnowItAll" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projKnowItAll" type="462c0819:PsiDirectoryNode" />
+              <item name="weetjes stuuren" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -88,24 +111,24 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1b709da1-5ab1-4889-9737-67a11f9bc7f8" name="Default Changelist" comment="" />
-      <created>1558524193682</created>
+      <changelist id="f6f85cf4-f03e-4f7c-9840-fd7536f9a1b4" name="Default Changelist" comment="" />
+      <created>1558679743756</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1558524193682</updated>
-      <workItem from="1558524199093" duration="6084000" />
-      <workItem from="1558593589565" duration="10969000" />
+      <updated>1558679743756</updated>
+      <workItem from="1558679750501" duration="1427000" />
+      <workItem from="1559128866942" duration="4218000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17053000" />
+    <option name="totallyTimeSpent" value="5645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15838926" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -131,20 +154,27 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../PHP/mysqli/1A/mysqliA1.php">
+    <entry file="file://$PROJECT_DIR$/../smoelboek/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="58" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="58" />
+        <state relative-caret-position="-289">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
+    <entry file="file://$PROJECT_DIR$/login/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="54" column="85" lean-forward="true" selection-start-line="54" selection-start-column="85" selection-end-line="54" selection-end-column="85" />
+        <state relative-caret-position="-357">
+          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weetjes stuuren/posten.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
