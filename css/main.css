@@ -1,3 +1,4 @@
+/* Algemene styling */
 html {
     overflow-x: hidden;
     position: relative;
@@ -7,7 +8,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
-
+/* Home styling */
 .main-heading {
     text-align: center;
 }
