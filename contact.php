@@ -26,7 +26,7 @@
 
 <div class="parallax"></div>
 
-<div class="container">
+<div class="ctc-container">
     <div class="map">
         <iframe src="https://maps.google.com/maps?width=100%&height=600&hl=nl&q=disketteweg%202-4+(Voltiac)&ie=UTF8&t=&z=17&iwloc=B&output=embed" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
@@ -34,15 +34,17 @@
     <div class="contact-form">
         <h1 class="title">Contact Opnemen</h1>
         <h2 class="subtitle">We zijn hier om je te helpen</h2>
-        <form action="">
+        <form name="contactform" action="includes/send_form_email.php" method="post">
             <input type="text" name="name" placeholder="Je naam" />
-            <input type="email" name="e-mail" placeholder="Je e-mail adres" />
-            <input type="tel" name="phone" placeholder="Je telefoonnummer"/>
-            <textarea name="text" id="" rows="8" placeholder="Jouw bericht"></textarea>
+            <input type="email" name="email" placeholder="Je e-mail adres" />
+            <input type="tel" name="telephone" placeholder="Je telefoonnummer"/>
+            <textarea name="comments" id="" rows="8" placeholder="Jouw bericht"></textarea>
             <button class="btn-send">Versturen</button>
         </form>
     </div>
 </div>
+
+<?php include "footer.php" ?>
 
 
 
