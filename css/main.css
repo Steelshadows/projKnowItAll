@@ -151,9 +151,6 @@ body {
 /*eind Home styling  */
 
 /*begin Login styling  */
-/* #signup, #login, .loginform, .signupform{
-  margin-top: 200px;
-} */
 #signup, #login{
   display: none;
 }
