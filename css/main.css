@@ -1,4 +1,6 @@
+/* Algemene styling */
 html {
+    overflow-x: hidden;
     position: relative;
     min-height: 100%;
 }
@@ -6,10 +8,75 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
-
-main {
-    margin-top: 60px;
-}
+/* Home styling */
 .main-heading {
     text-align: center;
+}
+.homecontainer{
+  margin-top: 60px;
+  width: 100vw;
+  height: 70vh;
+  /* border: 1px solid; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.homeimg1{
+  position: relative;
+    top: 4%;
+  width: 35%;
+  height: 88%
+}
+.homeimg2{
+  position: relative;
+    top: 4%;
+    left: 4%;
+  width: 20%;
+  height: 88%;
+}
+.div1{
+  width: 45%;
+  height: 90%;
+  border: 1px solid;
+}
+.topweetjes{
+  position: relative;
+    left: 8%;
+  height: 90%;
+  width: 10%;
+  border: 1px solid;
+}
+.homeline{
+  opacity: 0.2;
+  position: relative;
+    left: 5vw;
+  border-top: 2px solid;
+  width: 90vw;
+  margin-bottom: 10px;
+}
+.homep{
+  position: relative;
+    left: 46vw;
+}
+.homeimgbot{
+  margin-right: 15px;
+  width: 40%;
+  height: 80%;
+}
+.homecontcolumn{
+  position: relative;
+    left: 25%;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.homecontrow{
+  display: flex;
+  height: 30%;
+  width: 50%;
+  flex-direction: row;
+}
+.homeweetje{
+  position: relative;
+    top: 40px;
+    right: 30px;
 }
