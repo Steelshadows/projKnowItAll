@@ -24,7 +24,7 @@ if(isset($_SESSION['user_ID'])){
 
 $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'allowAnonymousPosting\'';
 $anonypost = '';
-$welcome = "<p>log in om te posten</p>";
+$welcome = "<p><a href='../login/login.php'>log in</a> om te posten</p>";
 $result = $conn->query($anonypostSQL);
 while($row = $result->fetch_assoc()) {
     $anonypost = $row['value'];
@@ -36,13 +36,13 @@ if ($anonypost == 'True'||isset($username)){
         $welcome = '<p>hallo ANONYMOUS</p>';
     }
     $welcome .= '
-<button onclick="document.getElementById(\'posting\').style = \'display:block;\';this.style = \'display:none;\'">signup</button>
+<button onclick="document.getElementById(\'posting\').style = \'display:block;\';this.style = \'display:none;\'">post</button>
 <div id=\'posting\' style="display: none">
     <form method="post">
-        <input type="text" name="Titel" placeholder="Titel" required>
-        <textarea id="message" name="message" placeholder="weetje"></textarea>
-        <input type="date" name="password" id="password" placeholder="Wachtwoord" required>
-        <input type="submit" name="submitPost" id="submitPost" style="display: none;">
+        <div><input type="text" name="Titel" placeholder="Titel" required></div>
+        <div><textarea id="message" name="message" placeholder="weetje"></textarea></div>
+        <div><input type="date" name="password" id="password" placeholder="Wachtwoord" required></div>
+        <div><input type="submit" name="submitPost" id="submitPost" style="display: none;"></div>
     </form>
     <button onclick="
         if(document.getElementById(\'message\').value != \'\'){
@@ -53,6 +53,44 @@ if ($anonypost == 'True'||isset($username)){
 
     ';
 }
+
+if(isset($_POST['submitPost'])){
+    $titel = htmlspecialchars($_POST['Titel']);
+    $message = htmlspecialchars($_POST['message']);
+    $Date =     htmlspecialchars($_POST['username']);
+//    $email = htmlspecialchars($_POST['email']);
+        $sql = '
+        INSERT INTO `knowitall_posts` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES (?, ?, ?)
+        ';
+//        $res = mysqli_query($conn, $sql);
+        $statement = $conn->prepare($sql);
+        $statement->bind_param('sss',$username, $email,$password);
+        if (!$statement->execute()){
+            if ($conn->errno == 1062){
+                echo 'deze email bestaat al, kies een andere';
+            }
+            else{
+                echo "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
+            }
+        }
+        $UIDcheckSQL='SELECT `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
+//        echo $UIDcheckSQL;
+        $result = $conn->query($UIDcheckSQL);
+        $id = false;
+        while($row = $result->fetch_assoc()) {
+            $UID = (int) $row['gebruiker_ID'];
+        }
+        $_SESSION['user_ID'] = $UID;
+    }
+}
+
+
+
+
+
+
+
+
 
 
 ?>

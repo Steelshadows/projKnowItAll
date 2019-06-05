@@ -6,7 +6,7 @@ $passwordsqllogin = "";
 $dbname = 'knowitall';
 $conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . $conn->connect_error);
 }
 
 if(isset($_POST['submitsignup'])){
@@ -74,7 +74,7 @@ if(isset($_SESSION['user_ID'])){
 
 //        var_dump($row);
     }
-    echo '<br>welkom, '.$username;
+    echo '<br>welkom, '.$username.'<br><a href=\'../weetjes%20stuuren/posten.php\'>post hier</a>';
 }
 
 
