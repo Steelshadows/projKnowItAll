@@ -81,7 +81,7 @@ body {
     top: 40px;
     right: 30px;
 }
-<<<<<<< HEAD
+
 
 /*Contact Section*/
 
@@ -98,6 +98,7 @@ body {
 .container .map {
   width: 45%;
   float: left;
+  margin-top: 20px;
 }
 .container .contact-form {
   width: 53%;
@@ -146,7 +147,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-=======
+
 /*eind Home styling  */
 
 /*begin Login styling  */
@@ -170,4 +171,3 @@ body {
   height: 500px;
 }
 /*eind Login styling  */
->>>>>>> 0243c728ef1cb2c87c01284eebafd59e33e12c6c
