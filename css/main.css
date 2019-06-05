@@ -1,4 +1,4 @@
-/* Algemene styling */
+/* begin Algemene styling */
 html {
     overflow-x: hidden;
     position: relative;
@@ -8,7 +8,8 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
-/* Home styling */
+/*eind Algemene styling  */
+/*begin Home styling */
 .main-heading {
     text-align: center;
 }
@@ -80,3 +81,26 @@ body {
     top: 40px;
     right: 30px;
 }
+/*eind Home styling  */
+
+/*begin Login styling  */
+/* #signup, #login, .loginform, .signupform{
+  margin-top: 200px;
+} */
+#signup, #login{
+  display: none;
+}
+.loginbutton, .signupbutton{
+  width: 80px;
+  height: 25px;
+}
+.logincontainer{
+  position: relative;
+    top: 100px;
+    left: 20%;
+  display: flex;
+  border: 1px solid;
+  width: 500px;
+  height: 500px;
+}
+/*eind Login styling  */
