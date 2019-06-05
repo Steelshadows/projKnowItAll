@@ -178,12 +178,12 @@ body {
     left: 35vw;
   display: flex;
   width: 35%;
-  height: 500px;
+  height: 400px;
 }
 .loginmessage{
   position: relative;
     left: 40%;
-    bottom: 50px;
+    bottom: -50px;
 }
 #signup, #login{
   position: relative;
