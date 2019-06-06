@@ -1,7 +1,7 @@
 <?php
 include 'conection.php';
 $message = '<div name="Message">message';
-if(isset($_POST['submitlogin'])){
+if (isset($_POST['submitlogin'])) {
 //    $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
     $password = $_POST['password'];
 //    $username =     htmlspecialchars($_POST['username']);
@@ -9,27 +9,27 @@ if(isset($_POST['submitlogin'])){
     $loginCheckSQL='SELECT `email`, `password`, `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
 //        echo $UIDcheckSQL;
     $result = $conn->query($loginCheckSQL);
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $check['EM'] = $row['email'];
         $check['PW'] = $row['password'];
 //        var_dump($check['PW'], $password, password_verify($password,$check['PW']));
-        if ($check['EM'] == $email&&password_verify($password,$check['PW'])){
+        if ($check['EM'] == $email&&password_verify($password, $check['PW'])) {
             $message .= 'login successfull';
             $_SESSION['user_ID'] = $row['USERID'];
         };
     };
-    if(!isset($_SESSION['user_ID'])){
+    if (!isset($_SESSION['user_ID'])) {
 //        if(isset($_SESSION['user_ID'])){session_destroy();}
         $message .= 'login mislukt';
     }
 }
-if(isset($_SESSION['user_ID'])){
+if (isset($_SESSION['user_ID'])) {
 //    echo $_SESSION['user_ID'];
 
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
 //    echo $usernameSQL;
     $result = $conn->query($usernameSQL);
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $username = $row['username'];
 
 //        var_dump($row);
@@ -38,7 +38,7 @@ if(isset($_SESSION['user_ID'])){
 }
 
 $message .= '</div>';
-var_dump( $message);
+var_dump($message);
 ?>
 <!doctype html>
 <html lang="en">
