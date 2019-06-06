@@ -10,37 +10,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-if (isset($_POST['submitsignup'])) {
-    $password = $_POST['password'];
-    $passwordCheck = $_POST['password'];
-    $username =     htmlspecialchars($_POST['username']);
-    $email = htmlspecialchars($_POST['email']);
-
-    if ($password == $passwordCheck) {
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $sql = '
-        INSERT INTO `knowitall_gebruikers` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES (?, ?, ?)
-        ';
-//        $res = mysqli_query($conn, $sql);
-        $statement = $conn->prepare($sql);
-        $statement->bind_param('sss', $username, $email, $password);
-        if (!$statement->execute()) {
-            if ($conn->errno == 1062) {
-                $message = $message . 'deze email bestaat al, kies een andere';
-            } else {
-                $message = $message . "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
-            }
-        }
-        $UIDcheckSQL='SELECT `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
-//        echo $UIDcheckSQL;
-        $result = $conn->query($UIDcheckSQL);
-        $id = false;
-        while ($row = $result->fetch_assoc()) {
-            $UID = (int) $row['gebruiker_ID'];
-        }
-        $_SESSION['user_ID'] = $UID;
-    }
-}
 if (isset($_POST['submitlogin'])) {
 //    $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
     $password = $_POST['password'];
@@ -94,35 +63,17 @@ if (isset($_SESSION['user_ID'])) {
 <body>
 <?php include "header.php"; ?>
 <div class="logincontainer">
-  <button class="signupbutton myButton" onclick="document.getElementById('signup').style = 'display:block;';this.style = 'display:none;'">Sign up</button>
-  <div id='signup'>
-      <form class="signupform" method="post">
-          <input type="text" name="email" placeholder="E-Mail" required>
-          <input type="text" name="username" placeholder="Gebruikersnaam" required>
-          <input type="password" name="password" id="passwordsignup" placeholder="Wachtwoord" required>
-          <input type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
-          <input type="submit" name="submitsignup" id="submitsignup"  style="display: none;">
-      </form>
-      <button class="signupsubmit myButton" button="signupsubmit" onclick="
-      console.log(document.getElementById('passwordsignup').value);
-      console.log(document.getElementById('passwordCheck').value);
-      if(document.getElementById('passwordsignup').value == document.getElementById('passwordCheck').value){
-          document.getElementById('submitsignup').click()
-      }
-      else{alert('passwords are not the same')}">Sign up</button>
-  </div>
+  <p class="logintitle">Login</p>
 
-
-
-  <button class="loginbutton myButton" onclick="document.getElementById('login').style = 'display:block;';this.style = 'display:none;'">Login</button>
   <div id='login'>
       <form class="loginform" method="post">
           <input type="text" name="email" placeholder="E-Mail" required>
           <input type="password" name="password" id="password" placeholder="Wachtwoord" required>
-          <br>
           <input type="submit" name="submitlogin" id="submitlogin" class="myButton" value="Login">
+          <a class="myButton signbut" href="signup.php">Sign up instead</a>
       </form>
   </div>
+
 </div>
 <?php echo $message . '</div>'?>
 <?php include "footer.php"; ?>
