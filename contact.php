@@ -38,8 +38,8 @@
             <input type="text" name="name" placeholder="Je naam" />
             <input type="email" name="email" placeholder="Je e-mail adres" />
             <input type="tel" name="telephone" placeholder="Je telefoonnummer"/>
-            <textarea name="comments" id="" rows="8" placeholder="Jouw bericht"></textarea>
-            <button class="btn-send">Versturen</button>
+            <textarea name="message" id="" rows="8" placeholder="Jouw bericht"></textarea>
+            <button name="submit" class="btn-send">Versturen</button>
         </form>
     </div>
 </div>
