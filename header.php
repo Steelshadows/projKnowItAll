@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"> <a class="nav-link" href="index.php">Home</a>
                 </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Link 1</a>
+                <li class="nav-item"> <a class="nav-link" href="weetjes.php">Weetjes</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="#">Link 2</a>
                 </li>
