@@ -11,7 +11,7 @@ include '../conection.php';
 $usernameSQL='
 SELECT `Title`,`Post`,`Date`,`knowitall_gebruikers`.`username` AS \'username\' 
 FROM `knowitall_posts` 
-INNER JOIN `knowitall_gebruikers` 
+LEFT JOIN `knowitall_gebruikers` 
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
 WHERE `Status` = \'Approved\' 
 ';
@@ -34,7 +34,7 @@ while($row = $result->fetch_assoc()) {
     $PostList .= $row['Date'];
     $PostList .= '</div>';
 
-    $PostList .= '<div>';
+    $PostList .= '<div>Post:<br>';
     $PostList .= $row['Post'];
     $PostList .= '</div>';
 
