@@ -1,62 +1,55 @@
 <?php
-session_start();
-$servername = "127.0.0.1";
-$usernamesqllogin = "root";
-$passwordsqllogin = "";
-$dbname = 'knowitall';
-$message = '<div class="loginmessage">';
-$conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-if (isset($_POST['submitsignup'])) {
+include 'conection.php';
+$message = '<div name="Message">';
+if(isset($_POST['submitsignup'])){
     $password = $_POST['password'];
     $passwordCheck = $_POST['password'];
     $username =     htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
 
-    if ($password == $passwordCheck) {
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    if($password == $passwordCheck) {
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
         $sql = '
-        INSERT INTO `knowitall_gebruikers` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES (?, ?, ?)
+        INSERT INTO `knowitall_gebruikers` (`username`, `email`, `password`) VALUES (?, ?, ?)
         ';
 //        $res = mysqli_query($conn, $sql);
         $statement = $conn->prepare($sql);
-        $statement->bind_param('sss', $username, $email, $password);
-        if (!$statement->execute()) {
-            if ($conn->errno == 1062) {
-                $message = $message . 'deze email bestaat al, kies een andere';
-            } else {
-                $message = $message . "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
+        $statement->bind_param('sss',$username, $email,$password);
+        if (!$statement->execute()){
+            if ($conn->errno == 1062){
+                $message .= 'deze email bestaat al, kies een andere';
+            }
+            else{
+                $message .= "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
             }
         }
-        $UIDcheckSQL='SELECT `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
+        $UIDcheckSQL='SELECT `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
 //        echo $UIDcheckSQL;
         $result = $conn->query($UIDcheckSQL);
         $id = false;
-        while ($row = $result->fetch_assoc()) {
-            $UID = (int) $row['gebruiker_ID'];
+        while($row = $result->fetch_assoc()) {
+            $UID = (int) $row['USERID'];
         }
         $_SESSION['user_ID'] = $UID;
     }
 }
 
-if (isset($_SESSION['user_ID'])) {
+if(isset($_SESSION['user_ID'])){
 //    echo $_SESSION['user_ID'];
 
-    $usernameSQL='SELECT `gebruikersnaam` FROM `knowitall_gebruikers` WHERE `gebruiker_ID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
+    $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
 //    echo $usernameSQL;
     $result = $conn->query($usernameSQL);
-    while ($row = $result->fetch_assoc()) {
-        $username = $row['gebruikersnaam'];
+    while($row = $result->fetch_assoc()) {
+        $username = $row['username'];
 
 //        var_dump($row);
     }
-    $message = $message . '<br>welkom, '.$username;
+    $message .= '<br>welkom, '.$username;
 }
 
-
+$message .= '</div>';
+var_dump( $message);
 ?>
 <!doctype html>
 <html lang="en">
@@ -85,7 +78,7 @@ if (isset($_SESSION['user_ID'])) {
       </form>
   </div>
 </div>
-<?php echo $message . '</div>'?>
+<?=$message?>
 <?php include "footer.php"; ?>
 <script src="script/script.js"></script>
 </body>
