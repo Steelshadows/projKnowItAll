@@ -66,7 +66,7 @@ if(isset($_SESSION['user_ID'])){
 
 //        var_dump($row);
     }
-    echo '<br>welkom, '.$username.'<br><a href=\'../weetjes%20stuuren/posten.php\'>post hier</a>';
+//    echo '<br>welkom, '.$username.'<br><a href=\'../weetjes%20stuuren/posten.php\'>post hier</a>';
 }
 
 

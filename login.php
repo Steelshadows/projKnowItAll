@@ -1,6 +1,6 @@
 <?php
 include 'conection.php';
-$message = '<div name="Message">message';
+$message = '<div name="Message">';
 if(isset($_POST['submitlogin'])){
 //    $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
     $password = $_POST['password'];
