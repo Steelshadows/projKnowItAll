@@ -220,3 +220,30 @@ input{
     left: 34%;
 }
 /*eind Login styling  */
+
+/*weetjes pagina*/
+
+.weetjecontainer {
+  width: 1268px;
+  margin: 70px auto;
+}
+
+.weetje-item {
+  position: relative;
+  width: 700px;
+  height: 150px;
+  border: 1px solid black;
+}
+
+.title-weetje {
+  position: absolute;
+  left: 180px;
+}
+
+.content-weetje {
+  position: absolute;
+  top: 40px;
+  left: 160px;
+}
+
+/*eind weetjes pagina*/
