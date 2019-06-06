@@ -1,4 +1,3 @@
-
 <?php
 
 $msg = "Uw e-mail is ontvangen, wij zullen zo snel mogelijk contact met je opnemen!";
@@ -38,7 +37,6 @@ if (isset($_POST['submit'])){
 <body>
 
     <div class="contact-msg"><?=$msg?></div>
-
 
     <div id="countdown"></div>
 
