@@ -8,6 +8,10 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
+input{
+  display: block;
+}
 /*eind Algemene styling  */
 /*begin Home styling */
 .main-heading {
@@ -163,15 +167,6 @@ body {
 /*eind Home styling  */
 
 /*begin Login styling  */
-#signup, #login{
-  display: none;
-}
-.loginbutton, .signupbutton{
-  margin-top: 250px;
-  margin-left: 10%;
-  width: 110px;
-  height: 40px;
-}
 .logincontainer{
   position: relative;
     top: 100px;
@@ -186,6 +181,8 @@ body {
     bottom: -50px;
 }
 #signup, #login{
+  display: flex;
+  flex-direction: row;
   position: relative;
     left: 10%;
     top: 200px;
@@ -212,4 +209,14 @@ body {
 	top:1px;
 }
 
+.signbut:hover{
+  color: #666666;
+  text-decoration: none;
+}
+
+.logintitle{
+  font-size: 2em;
+  position: relative;
+    left: 34%;
+}
 /*eind Login styling  */
