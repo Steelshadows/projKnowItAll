@@ -4,7 +4,7 @@ if(isset($_SESSION['user_ID'])){
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
     $result = $conn->query($usernameSQL);
     while($row = $result->fetch_assoc()) {
-        $username = $row['gebruikersnaam'];
+        $username = $row['username'];
     }
 }
 

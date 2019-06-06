@@ -43,7 +43,7 @@ if(isset($_POST['submitlogin'])){
     $result = $conn->query($loginCheckSQL);
     while($row = $result->fetch_assoc()) {
         $check['EM'] = $row['email'];
-        $check['PW'] = $row['wachtwoord'];
+        $check['PW'] = $row['password'];
 //        var_dump($check['PW'], $password, password_verify($password,$check['PW']));
         if ($check['EM'] == $email&&password_verify($password,$check['PW'])){
             echo 'login successfull';
@@ -62,7 +62,7 @@ if(isset($_SESSION['user_ID'])){
 //    echo $usernameSQL;
     $result = $conn->query($usernameSQL);
     while($row = $result->fetch_assoc()) {
-        $username = $row['gebruikersnaam'];
+        $username = $row['username'];
 
 //        var_dump($row);
     }
