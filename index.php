@@ -24,37 +24,42 @@
 <?php include "header.php"; ?>
 
     <main>
-        <!-- <h1 class="display-1 main-heading">Main Content</h1> -->
-      <div class="homecontainer">
-        <img class="homeimg1" src="img/placeholder.png">
-        <img class="homeimg2" src="img/placeholder.png">
-      </div>
-      <div class="homecontainer">
-        <div class="div1">
+        <div class="homecontainertop">
+          <div class="relative">
+              <img class="homeimg1" alt="img1" src="img/placeholder.png">
+              <div class="homeimg1tekst">Kaas</div>
+          </div>
+          <div class="relative2">
+              <img class="homeimg2" alt="img2" src="img/placeholder.png">
+              <div class="homeimg2tekst">Kaasssssssssss</div>
+          </div>
         </div>
-        <div class="topweetjes">
-          <p>Top 10 Weetjes</p>
+        <div class="homecontainer">
+            <div class="div1">
+            </div>
+            <div class="topweetjes">
+                <p>Top 10 Weetjes</p>
+            </div>
         </div>
-      </div>
-      <div class="homeline"></div>
-      <p class="homep">Recente weetjes</p>
-      <div class="homecontainer homecontcolumn">
-        <div class="homecontrow">
-          <img class="homeimgbot" src="img/placeholder.png">
-          <p>Titel</p>
-          <p class="homeweetje">Content</p>
+        <div class="homeline"></div>
+        <p class="homep">Recente weetjes</p>
+        <div class="homecontainer homecontcolumn">
+            <div class="homecontrow">
+                <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                <p>Titel</p>
+                <p class="homeweetje">Content</p>
+            </div>
+            <div class="homecontrow">
+                <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                <p>Titel</p>
+                <p class="homeweetje">Content</p>
+            </div>
+            <div class="homecontrow">
+                <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                <p>Titel</p>
+                <p class="homeweetje">Content</p>
+            </div>
         </div>
-        <div class="homecontrow">
-          <img class="homeimgbot" src="img/placeholder.png">
-          <p>Titel</p>
-          <p class="homeweetje">Content</p>
-        </div>
-        <div class="homecontrow">
-          <img class="homeimgbot" src="img/placeholder.png">
-          <p>Titel</p>
-          <p class="homeweetje">Content</p>
-        </div>
-      </div>
     </main>
 
 <?php include "footer.php"; ?>

@@ -4,79 +4,124 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
 /* Home styling */
 .main-heading {
     text-align: center;
 }
+
 .homecontainer{
-  margin-top: 60px;
-  width: 100vw;
-  height: 70vh;
-  /* border: 1px solid; */
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+    margin-top: 60px;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
+
+.homecontainertop{
+    margin-top: 60px;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: solid 3px red;
+}
+
+.relative{
+    position: relative;
+    color: black;
+    border: solid 3px;
+    width: 50%;
+}
+
+.relative2{
+    position: relative;
+    color: black;
+    border: solid 3px;
+    width: 20%;
+    margin-left: 25px;
+}
+
 .homeimg1{
-  position: relative;
-    top: 4%;
-  width: 35%;
-  height: 88%
+    width: 100%;
+    height: 400px;
 }
+
+.homeimg1tekst{
+    position: absolute;
+    bottom: 0;
+    background-color: grey;
+    width: 100%;
+}
+
 .homeimg2{
-  position: relative;
-    top: 4%;
-    left: 4%;
-  width: 20%;
-  height: 88%;
+    width: 100%;
+    height: 400px;
 }
+
+.homeimg2tekst{
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
 .div1{
   width: 45%;
   height: 90%;
   border: 1px solid;
 }
+
 .topweetjes{
   position: relative;
-    left: 8%;
+  left: 8%;
   height: 90%;
   width: 10%;
   border: 1px solid;
 }
+
 .homeline{
   opacity: 0.2;
   position: relative;
-    left: 5vw;
+  left: 5vw;
   border-top: 2px solid;
   width: 90vw;
   margin-bottom: 10px;
 }
+
 .homep{
   position: relative;
-    left: 46vw;
+  left: 46vw;
 }
+
 .homeimgbot{
   margin-right: 15px;
   width: 40%;
   height: 80%;
 }
+
 .homecontcolumn{
   position: relative;
-    left: 25%;
+  left: 25%;
   justify-content: flex-start;
   flex-direction: column;
 }
+
 .homecontrow{
   display: flex;
   height: 30%;
   width: 50%;
   flex-direction: row;
 }
+
 .homeweetje{
   position: relative;
-    top: 40px;
-    right: 30px;
+  top: 40px;
+  right: 30px;
 }
