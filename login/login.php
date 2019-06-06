@@ -1,13 +1,5 @@
 <?php
-session_start();
-$servername = "127.0.0.1";
-$usernamesqllogin = "root";
-$passwordsqllogin = "";
-$dbname = 'knowitall';
-$conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
-if (!$conn) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include '../conection.php';
 
 if(isset($_POST['submitsignup'])){
     $password = $_POST['password'];
@@ -18,7 +10,7 @@ if(isset($_POST['submitsignup'])){
     if($password == $passwordCheck) {
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
         $sql = '
-        INSERT INTO `knowitall_gebruikers` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES (?, ?, ?)
+        INSERT INTO `knowitall_gebruikers` (`username`, `email`, `password`) VALUES (?, ?, ?)
         ';
 //        $res = mysqli_query($conn, $sql);
         $statement = $conn->prepare($sql);
@@ -31,12 +23,12 @@ if(isset($_POST['submitsignup'])){
                 echo "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
             }
         }
-        $UIDcheckSQL='SELECT `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
+        $UIDcheckSQL='SELECT `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
 //        echo $UIDcheckSQL;
         $result = $conn->query($UIDcheckSQL);
         $id = false;
         while($row = $result->fetch_assoc()) {
-            $UID = (int) $row['gebruiker_ID'];
+            $UID = (int) $row['USERID'];
         }
         $_SESSION['user_ID'] = $UID;
     }
@@ -46,7 +38,7 @@ if(isset($_POST['submitlogin'])){
     $password = $_POST['password'];
 //    $username =     htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
-    $loginCheckSQL='SELECT `email`, `wachtwoord`, `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
+    $loginCheckSQL='SELECT `email`, `password`, `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
 //        echo $UIDcheckSQL;
     $result = $conn->query($loginCheckSQL);
     while($row = $result->fetch_assoc()) {
@@ -55,7 +47,7 @@ if(isset($_POST['submitlogin'])){
 //        var_dump($check['PW'], $password, password_verify($password,$check['PW']));
         if ($check['EM'] == $email&&password_verify($password,$check['PW'])){
             echo 'login successfull';
-            $_SESSION['user_ID'] = $row['gebruiker_ID'];
+            $_SESSION['user_ID'] = $row['USERID'];
         };
     };
     if(!isset($_SESSION['user_ID'])){
@@ -66,7 +58,7 @@ if(isset($_POST['submitlogin'])){
 if(isset($_SESSION['user_ID'])){
 //    echo $_SESSION['user_ID'];
 
-    $usernameSQL='SELECT `gebruikersnaam` FROM `knowitall_gebruikers` WHERE `gebruiker_ID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
+    $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
 //    echo $usernameSQL;
     $result = $conn->query($usernameSQL);
     while($row = $result->fetch_assoc()) {

@@ -1,20 +1,11 @@
 <?php
-session_start();
-$servername = "127.0.0.1";
-$usernamesqllogin = "root";
-$passwordsqllogin = "";
-$dbname = 'knowitall';
-$conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include '../conection.php';
 if(isset($_SESSION['user_ID'])){
-    $usernameSQL='SELECT `gebruikersnaam` FROM `knowitall_gebruikers` WHERE `gebruiker_ID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
+    $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
     $result = $conn->query($usernameSQL);
     while($row = $result->fetch_assoc()) {
         $username = $row['gebruikersnaam'];
     }
-
 }
 
 $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'allowAnonymousPosting\'';
@@ -65,26 +56,16 @@ if(isset($_POST['submitPost'])){
     else{die('anonymous posting disabled, <a href="../login/login.php">login</a> to try again');}
 
     $sql = '
-    INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `Gebruiker_ID`) VALUES (NULL, ? , ? , ? , ? , ?)
+    INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ? , ? , ? , ? , ?)
     ';
     $statement = $conn->prepare($sql);
     $statement->bind_param('sssss',$titel, $message,$Date,$status,$UID);
     if (!$statement->execute()){
-        if ($conn->errno == 1062){
-            echo 'deze email bestaat al, kies een andere';
-        }
-        else{
-            echo "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
-        }
+        $welcome.= "<div>Failed to add user error: (" . $conn->errno . ") " . $conn->error."</div>";
     }
-//    $UIDcheckSQL='SELECT `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
-////        echo $UIDcheckSQL;
-//    $result = $conn->query($UIDcheckSQL);
-//    $id = false;
-//    while($row = $result->fetch_assoc()) {
-//        $UID = (int) $row['gebruiker_ID'];
-//    }
-//    $_SESSION['user_ID'] = $UID;
+    else{
+        $welcome .= "uw weetje word spoedig door ons team gereviewd";
+    }
 }
 
 
