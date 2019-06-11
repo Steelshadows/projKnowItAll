@@ -29,27 +29,24 @@ input{
 }
 
 .homecontainertop{
-    margin-top: 60px;
+    margin-top: 80px;
     width: 100vw;
-    height: 70vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    border: solid 3px red;
 }
 
 .relative{
     position: relative;
-    color: black;
-    border: solid 3px;
-    width: 50%;
+    border: solid 3px black;
+    width: 45%;
 }
 
 .relative2{
     position: relative;
     color: black;
     border: solid 3px;
-    width: 20%;
+    width: 25%;
     margin-left: 25px;
 }
 
@@ -61,8 +58,12 @@ input{
 .homeimg1tekst{
     position: absolute;
     bottom: 0;
-    background-color: grey;
+    background-color: rgba(102, 102, 102, 0.5);
     width: 100%;
+    color: white;
+    height: 50px;
+    padding: 5px;
+    font-weight: bold;
 }
 
 .homeimg2{
@@ -72,62 +73,78 @@ input{
 
 .homeimg2tekst{
     position: absolute;
-    bottom: 8px;
-    left: 16px;
+    bottom: 0;
+    background-color: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    color: white;
+    height: 50px;
+    padding: 5px;
+    font-weight: bold;
 }
 
 .div1{
-  width: 45%;
-  height: 90%;
-  border: 1px solid;
+    width: 55%;
+    height: 70%;
+    border: 1px solid;
+    padding: 10px;
 }
 
 .topweetjes{
-  position: relative;
-  left: 8%;
-  height: 90%;
-  width: 10%;
-  border: 1px solid;
+    height: 70%;
+    width: 15%;
+    border: 1px solid;
+    margin-left: 25px;
+    font-weight: bold;
+    padding: 10px;
 }
 
 .homeline{
-  opacity: 0.2;
-  position: relative;
-  left: 5vw;
-  border-top: 2px solid;
-  width: 90vw;
-  margin-bottom: 10px;
+    opacity: 0.2;
+    position: relative;
+    left: 5vw;
+    border-top: 2px solid;
+    width: 90vw;
+    margin-bottom: 10px;
+}
+
+.homeline2{
+    opacity: 0.2;
+    position: relative;
+    border-top: 2px solid;
+    width: 40%;
+    margin-bottom: 20px;
 }
 
 .homep{
-  position: relative;
-  left: 46vw;
+    position: relative;
+    left: 46vw;
+    font-weight: bold;
 }
 
 .homeimgbot{
-  margin-right: 15px;
-  width: 40%;
-  height: 80%;
+    margin-right: 15px;
+    width: 40%;
+    height: 80%;
 }
 
 .homecontcolumn{
-  position: relative;
-  left: 25%;
-  justify-content: flex-start;
-  flex-direction: column;
+    position: relative;
+    left: 25%;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .homecontrow{
-  display: flex;
-  height: 30%;
-  width: 50%;
-  flex-direction: row;
+    display: flex;
+    height: 30%;
+    width: 50%;
+    flex-direction: row;
 }
 
 .homeweetje{
-  position: relative;
-  top: 40px;
-  right: 30px;
+    position: relative;
+    top: 40px;
+    right: 30px;
 }
 
 
@@ -232,7 +249,7 @@ input{
     top: 200px;
 }
 .myButton {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0 1px 0 0 #ffffff;
 	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
 	background-color:#f9f9f9;
 	border-radius:6px;
@@ -242,7 +259,7 @@ input{
 	color:#666666;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+	text-shadow:0 1px 0 #ffffff;
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);

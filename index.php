@@ -26,7 +26,7 @@
     <main>
         <div class="homecontainertop">
           <div class="relative">
-              <img class="homeimg1" alt="img1" src="img/placeholder.png">
+              <img class="homeimg1" alt="img1" src="img/europeslostf.jpg">
               <div class="homeimg1tekst">Kaas</div>
           </div>
           <div class="relative2">
@@ -36,6 +36,7 @@
         </div>
         <div class="homecontainer">
             <div class="div1">
+                <h1>Welkom op de beste weetjes site van Nederland!</h1>
             </div>
             <div class="topweetjes">
                 <p>Top 10 Weetjes</p>
@@ -49,16 +50,19 @@
                 <p>Titel</p>
                 <p class="homeweetje">Content</p>
             </div>
+            <div class="homeline2"></div>
             <div class="homecontrow">
                 <img class="homeimgbot" alt="img" src="img/placeholder.png">
                 <p>Titel</p>
                 <p class="homeweetje">Content</p>
             </div>
+            <div class="homeline2"></div>
             <div class="homecontrow">
                 <img class="homeimgbot" alt="img" src="img/placeholder.png">
                 <p>Titel</p>
                 <p class="homeweetje">Content</p>
             </div>
+            <div class="homeline2"></div>
         </div>
     </main>
 
