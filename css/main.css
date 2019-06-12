@@ -373,11 +373,13 @@ input{
     .homecontainer {
         display: block;
         margin-top: 10px;
-        margin-bottom: 250px;
+        margin-bottom: 0;
     }
 
     .div1{
         width: 100%;
+        height: 250px;
+        margin-bottom: 10px;
     }
 
     .topweetjes{
@@ -388,13 +390,13 @@ input{
         display: block;
         width: 100%;
         border: solid black 1px;
-        margin: 10px
     }
 
     .column {
-        float: left;
+        float: none;
         width: 50%;
-        height: 300px; /* Should be removed. Only for demonstration */
+        height: 200px; /* Should be removed. Only for demonstration */
+        margin: 0;
     }
 
     /* Clear floats after the columns */
@@ -404,8 +406,8 @@ input{
         clear: both;
     }
 
-    .columntext{
-
+    .columntext1{
+        margin-left: 25px;
     }
 }
 
