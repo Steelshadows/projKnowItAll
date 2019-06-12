@@ -19,11 +19,17 @@ WHERE `Status` = \'Approved\'
 $result = $conn->query($usernameSQL);
 $PostList = '<div>';
 while($row = $result->fetch_assoc()) {
-    var_dump($row);
+//    var_dump($row);
+    if($row['username']!=NULL){
+        $usname = $row['username'];
+    }
+    else {
+        $usname = 'ANONYMOUS';
+    }
     $PostList .= '<div>';
 
     $PostList .= '<div>User: ';
-    $PostList .= $row['username'];
+    $PostList .= $usname;
     $PostList .= '</div>';
 
     $PostList .= '<div>Titel: ';
@@ -42,6 +48,7 @@ while($row = $result->fetch_assoc()) {
 //        var_dump($row);
 }
 $PostList .= '</div>';
-echo $PostList;
+?>
+<?=$PostList?>
 
 
