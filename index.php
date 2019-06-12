@@ -26,12 +26,12 @@
     <main>
         <div class="homecontainertop">
           <div class="relative">
-              <img class="homeimg1" alt="img1" src="img/europeslostf.jpg">
-              <div class="homeimg1tekst">Kaas</div>
+              <img class="homeimg" alt="img1" src="img/frontpage.png">
+              <div class="homeimg1tekst">Het grootste gaming event van de wereld. E3 alle nieuwste games en game gerelateerde nieuws op een rijtje.</div>
           </div>
           <div class="relative2">
-              <img class="homeimg2" alt="img2" src="img/placeholder.png">
-              <div class="homeimg2tekst">Kaasssssssssss</div>
+              <img class="homeimg" alt="img2" src="img/frontpage2.png">
+              <div class="homeimg2tekst">Halo voor het eerst naar de pc na 18 jaar.</div>
           </div>
         </div>
         <div class="homecontainer">
@@ -40,6 +40,18 @@
             </div>
             <div class="topweetjes">
                 <p>Top 10 Weetjes</p>
+                <div class="topweetjecontainer">
+                    <div class="space">#1: </div>
+                    <div class="space">#2: </div>
+                    <div class="space">#3: </div>
+                    <div class="space">#4: </div>
+                    <div class="space">#5: </div>
+                    <div class="space">#6: </div>
+                    <div class="space">#7: </div>
+                    <div class="space">#8: </div>
+                    <div class="space">#9: </div>
+                    <div class="space">#10: Halo naar pc. </div>
+                </div>
             </div>
         </div>
         <div class="homeline"></div>
