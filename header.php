@@ -28,7 +28,7 @@
                         <a class="dropdown-item" href="signup.php">Sign up</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
+                        <a class="dropdown-item" href="uitloggen.php">Uitloggen</a>
                     </div>
                 </li>
             </ul>

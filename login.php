@@ -1,6 +1,8 @@
 <?php
 include 'conection.php';
-$message = '<div name="Message">';
+$message = '<div class="loginmessage">';
+$form = null;
+
 if (isset($_POST['submitlogin'])) {
 //    $password = password_hash($_POST['password'], PASSWORD_BCRYPT );
     $password = $_POST['password'];
@@ -16,6 +18,7 @@ if (isset($_POST['submitlogin'])) {
         if ($check['EM'] == $email&&password_verify($password, $check['PW'])) {
             $message .= 'login successfull';
             $_SESSION['user_ID'] = $row['USERID'];
+            header("location: index.php");
         };
     };
     if (!isset($_SESSION['user_ID'])) {
@@ -24,21 +27,30 @@ if (isset($_POST['submitlogin'])) {
     }
 }
 if (isset($_SESSION['user_ID'])) {
-//    echo $_SESSION['user_ID'];
-
-    $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
-//    echo $usernameSQL;
-    $result = $conn->query($usernameSQL);
-    while ($row = $result->fetch_assoc()) {
-        $username = $row['username'];
-
-//        var_dump($row);
-    }
-    $message .= '<br>welkom, '.$username;
+//     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
+    // //    echo $usernameSQL;
+//     $result = $conn->query($usernameSQL);
+//     while ($row = $result->fetch_assoc()) {
+//         $username = $row['username'];
+//
+    // //        var_dump($row);
+//     }
+    $message .= 'U bent al ingelogd';
+} else {
+    $form = '<div class="logincontainer">
+    <p class="logintitle">Login</p>
+    <div id="login">
+        <form class="loginform" method="post">
+            <input type="text" name="email" placeholder="E-Mail" required>
+            <input type="password" name="password" id="password" placeholder="Wachtwoord" required>
+            <input type="submit" name="submitlogin" id="submitlogin" class="myButton" value="Login">
+            <a class="myButton signbut" href="signup.php">Sign up instead</a>
+        </form>
+    </div>
+  </div>';
 }
 
 $message .= '</div>';
-var_dump($message);
 ?>
 <!doctype html>
 <html lang="en">
@@ -50,21 +62,11 @@ var_dump($message);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
-    <title>Document</title>
+    <title>Know It All</title>
 </head>
 <body>
 <?php include "header.php"; ?>
-<div class="logincontainer">
-  <p class="logintitle">Login</p>
-  <div id='login'>
-      <form class="loginform" method="post">
-          <input type="text" name="email" placeholder="E-Mail" required>
-          <input type="password" name="password" id="password" placeholder="Wachtwoord" required>
-          <input type="submit" name="submitlogin" id="submitlogin" class="myButton" value="Login">
-          <a class="myButton signbut" href="signup.php">Sign up instead</a>
-      </form>
-  </div>
-</div>
+<?=$form?>
 <?=$message?>
 <?php include "footer.php"; ?>
 </body>
