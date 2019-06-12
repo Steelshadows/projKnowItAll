@@ -1,5 +1,6 @@
 <?php
 include 'conection.php';
+$message = "<div>";
 if (isset($_POST['submitsignup'])) {
     $password = $_POST['password'];
     $passwordCheck = $_POST['password'];
@@ -46,9 +47,9 @@ if (isset($_SESSION['user_ID'])) {
 
 //        var_dump($row);
     }
-    $message = $message . '<br>welkom, '.$username;
+    $message .= '<br>welkom, '.$username;
 }
-
+$message .= "</div>";
 
 ?>
 <!doctype html>
@@ -78,7 +79,7 @@ if (isset($_SESSION['user_ID'])) {
       </form>
   </div>
 </div>
-<?php echo $message . '</div>'?>
+<?php echo $message?>
 <?php include "footer.php"; ?>
 <script src="script/script.js"></script>
 </body>
