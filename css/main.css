@@ -4,6 +4,7 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
@@ -17,71 +18,136 @@ input{
 .main-heading {
     text-align: center;
 }
+
 .homecontainer{
-  margin-top: 60px;
-  width: 100vw;
-  height: 70vh;
-  /* border: 1px solid; */
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+    margin-top: 60px;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
-.homeimg1{
-  position: relative;
-    top: 4%;
-  width: 35%;
-  height: 88%
+
+.homecontainertop{
+    margin-top: 80px;
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
-.homeimg2{
-  position: relative;
-    top: 4%;
-    left: 4%;
-  width: 20%;
-  height: 88%;
+
+.relative{
+    position: relative;
+    border: solid 3px black;
+    width: 45%;
 }
+
+.relative2{
+    position: relative;
+    color: black;
+    border: solid 3px;
+    width: 25%;
+    margin-left: 25px;
+}
+
+.homeimg{
+    width: 100%;
+    height: 400px;
+}
+
+.homeimg1tekst{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    color: white;
+    height: 50px;
+    padding: 5px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.homeimg2tekst{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    color: white;
+    height: 50px;
+    padding: 5px;
+    font-weight: bold;
+    line-height: normal;
+}
+
 .div1{
-  width: 45%;
-  height: 90%;
-  border: 1px solid;
+    width: 55%;
+    height: 70%;
+    border: 1px solid;
+    padding: 10px;
 }
+
 .topweetjes{
-  position: relative;
-    left: 8%;
-  height: 90%;
-  width: 10%;
-  border: 1px solid;
+    height: 70%;
+    width: 15%;
+    border: 1px solid;
+    margin-left: 25px;
+    font-weight: bold;
+    padding: 10px;
 }
+
+.topweetjecontainer{
+
+}
+
+.space{
+    margin-top: 10px;
+}
+
 .homeline{
-  opacity: 0.2;
-  position: relative;
+    opacity: 0.2;
+    position: relative;
     left: 5vw;
-  border-top: 2px solid;
-  width: 90vw;
-  margin-bottom: 10px;
+    border-top: 2px solid;
+    width: 90vw;
+    margin-bottom: 10px;
 }
+
+.homeline2{
+    opacity: 0.2;
+    position: relative;
+    border-top: 2px solid;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
 .homep{
-  position: relative;
+    position: relative;
     left: 46vw;
+    font-weight: bold;
 }
+
 .homeimgbot{
-  margin-right: 15px;
-  width: 40%;
-  height: 80%;
+    margin-right: 15px;
+    width: 40%;
+    height: 80%;
 }
+
 .homecontcolumn{
-  position: relative;
+    position: relative;
     left: 25%;
-  justify-content: flex-start;
-  flex-direction: column;
+    justify-content: flex-start;
+    flex-direction: column;
 }
+
 .homecontrow{
-  display: flex;
-  height: 30%;
-  width: 50%;
-  flex-direction: row;
+    display: flex;
+    height: 30%;
+    width: 50%;
+    flex-direction: row;
 }
+
 .homeweetje{
-  position: relative;
+    position: relative;
     top: 40px;
     right: 30px;
 }
@@ -188,7 +254,7 @@ input{
     top: 200px;
 }
 .myButton {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0 1px 0 0 #ffffff;
 	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
 	background-color:#f9f9f9;
 	border-radius:6px;
@@ -198,7 +264,7 @@ input{
 	color:#666666;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+	text-shadow:0 1px 0 #ffffff;
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
@@ -247,3 +313,61 @@ input{
 }
 
 /*eind weetjes pagina*/
+
+
+/*Homepagina responsive*/
+@media only screen and (max-width: 1500px) {
+    .homeimg{
+        width: 100%;
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .homeimg{
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .homeimg{
+        width: 100%;
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .homeimg{
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .homeimg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .homecontainertop {
+        display: block;
+        margin-top: 50px;
+    }
+
+    .relative {
+        width: 100%;
+        border: none;
+    }
+    .relative2 {
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 361px) {
+    .homecontainertop {
+        margin-top: 80px;
+    }
+}
