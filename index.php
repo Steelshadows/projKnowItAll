@@ -5,6 +5,11 @@
  * Date: 5/22/2019
  * Time: 02:24 PM
  */
+ session_start();
+ $message = null;
+ if (isset($_SESSION['user_ID'])) {
+     $message = '<p class="homemessage">Welkom, ' . $_SESSION['username'] . '</p>';
+ }
 ?>
 
 <!doctype html>
@@ -22,7 +27,7 @@
 <body>
 
 <?php include "header.php"; ?>
-
+<?=$message?>
     <main>
         <div class="homecontainertop">
           <div class="relative">

@@ -27,14 +27,16 @@ if (isset($_POST['submitsignup'])) {
                 $message = $message . "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
             }
         }
-        $UIDcheckSQL='SELECT `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\';';
+        $UIDcheckSQL='SELECT `USERID`, `username` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\';';
 //        echo $UIDcheckSQL;
         $result = $conn->query($UIDcheckSQL);
         $id = false;
         while ($row = $result->fetch_assoc()) {
             $UID = (int) $row['USERID'];
+            $user = $row['username'];
         }
         $_SESSION['user_ID'] = $UID;
+        $_SESSION['username'] = $user;
         header("location: index.php");
     }
 }

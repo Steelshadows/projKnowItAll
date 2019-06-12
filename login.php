@@ -8,7 +8,7 @@ if (isset($_POST['submitlogin'])) {
     $password = $_POST['password'];
 //    $username =     htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
-    $loginCheckSQL='SELECT `email`, `password`, `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
+    $loginCheckSQL='SELECT `email`, `password`,  `username`, `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
 //        echo $UIDcheckSQL;
     $result = $conn->query($loginCheckSQL);
     while ($row = $result->fetch_assoc()) {
@@ -18,6 +18,7 @@ if (isset($_POST['submitlogin'])) {
         if ($check['EM'] == $email&&password_verify($password, $check['PW'])) {
             $message .= 'login successfull';
             $_SESSION['user_ID'] = $row['USERID'];
+            $_SESSION['username'] = $row['username'];
             header("location: index.php");
         };
     };

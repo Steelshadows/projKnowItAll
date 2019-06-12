@@ -15,6 +15,12 @@ input{
 }
 /*eind Algemene styling  */
 /*begin Home styling */
+.homemessage{
+    position: relative;
+    top: 60px;
+    left: 50%;
+}
+
 .main-heading {
     text-align: center;
 }
