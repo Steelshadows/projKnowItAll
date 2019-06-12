@@ -1,15 +1,5 @@
 <?php
-session_start();
-$servername = "127.0.0.1";
-$usernamesqllogin = "root";
-$passwordsqllogin = "";
-$dbname = 'knowitall';
-$message = '<div class="loginmessage">';
-$conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
+include 'conection.php';
 if (isset($_POST['submitsignup'])) {
     $password = $_POST['password'];
     $passwordCheck = $_POST['password'];
