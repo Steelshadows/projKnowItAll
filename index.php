@@ -53,29 +53,48 @@
                     <div class="space">#10: Halo naar pc. </div>
                 </div>
             </div>
+            <div class="resp">
+                <div class="row">
+                    <div class="column">
+                        <div class="columntext">
+                            <h2>Column 1</h2>
+                            <p>Some text..</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="columntext">
+                            <h2>Column 2</h2>
+                            <p>Some text..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="homeline"></div>
-        <p class="homep">Recente weetjes</p>
-        <div class="homecontainer homecontcolumn">
-            <div class="homecontrow">
-                <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                <p>Titel</p>
-                <p class="homeweetje">Content</p>
+        <div>
+            <div class="homeline"></div>
+            <p class="homep">Recente weetjes</p>
+            <div class="homecontcolumn">
+                <div class="homecontrow">
+                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                    <p>Titel</p>
+                    <p class="homeweetje">Content</p>
+                </div>
+                <div class="homeline2"></div>
+                <div class="homecontrow">
+                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                    <p>Titel</p>
+                    <p class="homeweetje">Content</p>
+                </div>
+                <div class="homeline2"></div>
+                <div class="homecontrow">
+                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                    <p>Titel</p>
+                    <p class="homeweetje">Content</p>
+                </div>
+                <div class="homeline2"></div>
             </div>
-            <div class="homeline2"></div>
-            <div class="homecontrow">
-                <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                <p>Titel</p>
-                <p class="homeweetje">Content</p>
-            </div>
-            <div class="homeline2"></div>
-            <div class="homecontrow">
-                <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                <p>Titel</p>
-                <p class="homeweetje">Content</p>
-            </div>
-            <div class="homeline2"></div>
         </div>
+
     </main>
 
 <?php include "footer.php"; ?>

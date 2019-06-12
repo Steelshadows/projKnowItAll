@@ -95,6 +95,10 @@ input{
     padding: 10px;
 }
 
+.resp{
+    display: none;
+}
+
 .topweetjecontainer{
 
 }
@@ -359,10 +363,49 @@ input{
         width: 100%;
         border: none;
     }
+
     .relative2 {
         width: 100%;
         margin: 0;
         border: none;
+    }
+
+    .homecontainer {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 250px;
+    }
+
+    .div1{
+        width: 100%;
+    }
+
+    .topweetjes{
+        display: none;
+    }
+
+    .resp{
+        display: block;
+        width: 100%;
+        border: solid black 1px;
+        margin: 10px
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        height: 300px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .columntext{
+
     }
 }
 
