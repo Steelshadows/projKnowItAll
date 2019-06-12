@@ -38,7 +38,7 @@ if (isset($_SESSION['user_ID'])) {
 }
 
 $message .= '</div>';
-var_dump($message);
+//var_dump($message);
 ?>
 <!doctype html>
 <html lang="en">

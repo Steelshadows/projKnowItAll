@@ -18,8 +18,11 @@ if (isset($_POST['submitsignup'])) {
 
     if ($password == $passwordCheck) {
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+//        $sql = '
+//        INSERT INTO `knowitall_gebruikers` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES ( ? , ? , ? )
+//        ';
         $sql = '
-        INSERT INTO `knowitall_gebruikers` (`gebruikersnaam`, `email`, `wachtwoord`) VALUES (?, ?, ?)
+        INSERT INTO `knowitall_gebruikers` (`username`, `email`, `password`, `admin`) VALUES (? , ? , ? , 0)
         ';
 //        $res = mysqli_query($conn, $sql);
         $statement = $conn->prepare($sql);
@@ -31,12 +34,12 @@ if (isset($_POST['submitsignup'])) {
                 $message = $message . "Failed to add user error: (" . $conn->errno . ") " . $conn->error;
             }
         }
-        $UIDcheckSQL='SELECT `gebruiker_ID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\'';
+        $UIDcheckSQL='SELECT `USERID` FROM `knowitall_gebruikers` WHERE `email` = \''.$conn->real_escape_string($email).'\';';
 //        echo $UIDcheckSQL;
         $result = $conn->query($UIDcheckSQL);
         $id = false;
         while ($row = $result->fetch_assoc()) {
-            $UID = (int) $row['gebruiker_ID'];
+            $UID = (int) $row['USERID'];
         }
         $_SESSION['user_ID'] = $UID;
     }
@@ -45,11 +48,11 @@ if (isset($_POST['submitsignup'])) {
 if (isset($_SESSION['user_ID'])) {
 //    echo $_SESSION['user_ID'];
 
-    $usernameSQL='SELECT `gebruikersnaam` FROM `knowitall_gebruikers` WHERE `gebruiker_ID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
+    $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
 //    echo $usernameSQL;
     $result = $conn->query($usernameSQL);
     while ($row = $result->fetch_assoc()) {
-        $username = $row['gebruikersnaam'];
+        $username = $row['username'];
 
 //        var_dump($row);
     }
