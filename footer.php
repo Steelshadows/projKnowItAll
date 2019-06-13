@@ -10,7 +10,7 @@
 <footer>
     <footer class="footer">
         <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
+            <span class="text-muted">&copy; KnowItAll 2019 - All rights reserved</span>
         </div>
     </footer>
 </footer>
