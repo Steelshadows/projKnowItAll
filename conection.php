@@ -2,7 +2,7 @@
 session_start();
 $servername = "localhost";
 $usernamesqllogin = "student4a8_462577";
-$passwordsqllogin = "middelvinger";
+$passwordsqllogin = "VgC1NIok3C";
 $dbname = "student4a8_462577";
 $conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
 if (!$conn) {

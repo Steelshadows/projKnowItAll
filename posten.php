@@ -10,7 +10,7 @@ if(isset($_SESSION['user_ID'])){
 
 $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'allowAnonymousPosting\'';
 $anonypost = '';
-$welcome = "<p><a href='../login/login.php'>log in</a> om te posten</p>";
+$welcome = "<p><a href='login/login.php'>log in</a> om te posten</p>";
 $result = $conn->query($anonypostSQL);
 while($row = $result->fetch_assoc()) {
     $anonypost = $row['value'];
@@ -53,7 +53,7 @@ if(isset($_POST['submitPost'])){
             $UID = 00;
         }
     }
-    else{die('anonymous posting disabled, <a href="../login/login.php">login</a> to try again');}
+    else{die('anonymous posting disabled, <a href="login/login.php">login</a> to try again');}
 
     $sql = '
     INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ? , ? , ? , ? , ?)
