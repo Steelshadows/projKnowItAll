@@ -36,7 +36,10 @@
         </div>
         <div class="homecontainer">
             <div class="div1">
-                <h1>Welkom op de beste weetjes site van Nederland!</h1>
+                <h1 class="introtekst">Welkom op de beste weetjes site van Nederland!</h1>
+                <div>Alle game weetjes op een rij!</div>
+                <div>Je kunt natuurlijk ook alle weetjes sorteren op een bepaalde datum.</div>
+                <div>Heb jij zelf een weetje? Maak dan een account aan en stuur een weetje in!</div>
             </div>
             <div class="topweetjes">
                 <p>Top 10 Weetjes</p>
