@@ -17,7 +17,7 @@ if (isset($_SESSION['user_ID'])) {
 
 <header>
     <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">KnowItAll - Dagelijkse weetjes!</a>
+        <img src="../img/kia_logo.png" width="28" alt="logo">&nbsp;<a class="navbar-brand" href="index.php">KnowItAll - Dagelijkse weetjes!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">☰</button>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav ml-auto">
