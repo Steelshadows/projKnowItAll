@@ -55,7 +55,7 @@ if (isset($_SESSION['user_ID'])) {
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<img src="img/kia_logo.png" width="28" alt="logo"><h3 class="panel-title">Please Log In</h3>
+			    	<img src="img/kia_logo.png" width="28" alt="logo"><h3 class="panel-title">Inloggen</h3>
 			 	</div>
 			 	<br/>
 			  	<div class="panel-body">
@@ -72,7 +72,7 @@ if (isset($_SESSION['user_ID'])) {
 			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
 			    	    	</label>
 			    	    </div>
-			    		<input class="btn btn-dark btn-success btn-block" type="submit" name="submitlogin" id="submitlogin" value="Login">
+			    		<input class="btn btn-dark btn-success btn-block" type="submit" name="submitlogin" id="submitlogin" value="Inloggen">
 			    	</fieldset>
 			      	</form>
 			    </div>

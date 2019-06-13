@@ -72,7 +72,7 @@ if (isset($_SESSION['user_ID'])) {
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<img src="img/kia_logo.png" width="28" alt="logo"><h3 class="panel-title">Please Sign up</h3>
+			    	<img src="img/kia_logo.png" width="28" alt="logo"><h3 class="panel-title">Registreren</h3>
 			 	</div>
 			 	<br/>
 			  	<div class="panel-body">
@@ -90,7 +90,7 @@ if (isset($_SESSION['user_ID'])) {
 			    		<div class="form-group">
 			    			<input class="form-control" type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
 			    		</div>
-			    		<input class="btn btn-dark btn-success btn-block" type="submit" name="submitsignup" id="submitsignup" class="myButton" value="Sign up">
+			    		<input class="btn btn-dark btn-success btn-block" type="submit" name="submitsignup" id="submitsignup" value="Registreren">
 			    	</fieldset>
 			      	</form>
 			    </div>
