@@ -48,7 +48,10 @@
         </div>
         <div class="homecontainer">
             <div class="div1">
-                <h1>Welkom op de beste weetjes site van Nederland!</h1>
+                <h1 class="introtekst">Welkom op de beste weetjes site van Nederland!</h1>
+                <div>Alle game weetjes op een rij!</div>
+                <div>Je kunt natuurlijk ook alle weetjes sorteren op een bepaalde datum.</div>
+                <div>Heb jij zelf een weetje? Maak dan een account aan en stuur een weetje in!</div>
             </div>
             <div class="topweetjes">
                 <p>Top 10 Weetjes</p>
@@ -65,29 +68,56 @@
                     <div class="space">#10: Halo naar pc. </div>
                 </div>
             </div>
+            <div class="resp">
+                <div class="row">
+                    <div class="column">
+                        <div class="columntext1">
+                            <p>Top 10 Weetjes</p>
+                            <div class="space">#1: </div>
+                            <div class="space">#2: </div>
+                            <div class="space">#3: </div>
+                            <div class="space">#4: </div>
+                            <div class="space">#5: </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="columntext2">
+                            <br>
+                            <div class="space">#6: </div>
+                            <div class="space">#7: </div>
+                            <div class="space">#8: </div>
+                            <div class="space">#9: </div>
+                            <div class="space">#10: Halo naar pc. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="homeline"></div>
-        <p class="homep">Recente weetjes</p>
-        <div class="homecontainer homecontcolumn">
-            <div class="homecontrow">
-                <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                <p>Titel</p>
-                <p class="homeweetje">Content</p>
+        <div>
+            <div class="homeline"></div>
+            <p class="homep">Recente weetjes</p>
+            <div class="homecontcolumn">
+                <div class="homecontrow">
+                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                    <p>Titel</p>
+                    <p class="homeweetje">Content</p>
+                </div>
+                <div class="homeline2"></div>
+                <div class="homecontrow">
+                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                    <p>Titel</p>
+                    <p class="homeweetje">Content</p>
+                </div>
+                <div class="homeline2"></div>
+                <div class="homecontrow">
+                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                    <p>Titel</p>
+                    <p class="homeweetje">Content</p>
+                </div>
+                <div class="homeline2"></div>
             </div>
-            <div class="homeline2"></div>
-            <div class="homecontrow">
-                <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                <p>Titel</p>
-                <p class="homeweetje">Content</p>
-            </div>
-            <div class="homeline2"></div>
-            <div class="homecontrow">
-                <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                <p>Titel</p>
-                <p class="homeweetje">Content</p>
-            </div>
-            <div class="homeline2"></div>
         </div>
+
     </main>
 
 <?php include "footer.php"; ?>
