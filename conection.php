@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 $servername = "localhost";
 $usernamesqllogin = "student4a8_462577";
