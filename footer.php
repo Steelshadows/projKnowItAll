@@ -10,7 +10,7 @@
 <footer>
     <footer class="footer">
         <div class="container">
-            <span class="text-muted">&copy; KnowItAll 2019 - All rights reserved</span>
+            <span class="text-muted">&copy; KnowItAll 2019 - Alle rechten voorbehouden</span>
         </div>
     </footer>
 </footer>
