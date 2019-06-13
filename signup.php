@@ -54,19 +54,50 @@ if (isset($_SESSION['user_ID'])) {
 //     }
     $message = $message . 'U bent al ingelogd';
 } else {
+//    $form = '<div class="logincontainer">
+//    <p class="logintitle">Signup</p>
+//    <div id="signup">
+//        <form class="signupform" method="post" onsubmit="return validatePassword()">
+//            <input type="text" name="email" placeholder="E-Mail" required>
+//            <input type="text" name="username" placeholder="Gebruikersnaam" required>
+//            <input type="password" name="password" id="passwordsignup" placeholder="Wachtwoord" required>
+//            <input type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
+//            <input type="submit" name="submitsignup" id="submitsignup" class="myButton" value="Sign up">
+//            <a class="myButton signbut" href="login.php">Login instead</a>
+//        </form>
+//    </div>
+//  </div>';
     $form = '<div class="logincontainer">
-    <p class="logintitle">Signup</p>
-    <div id="signup">
-        <form class="signupform" method="post" onsubmit="return validatePassword()">
-            <input type="text" name="email" placeholder="E-Mail" required>
-            <input type="text" name="username" placeholder="Gebruikersnaam" required>
-            <input type="password" name="password" id="passwordsignup" placeholder="Wachtwoord" required>
-            <input type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
-            <input type="submit" name="submitsignup" id="submitsignup" class="myButton" value="Sign up">
-            <a class="myButton signbut" href="login.php">Login instead</a>
-        </form>
-    </div>
-  </div>';
+    <div class="loginrow">
+		<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<img src="img/kia_logo.png" width="28" alt="logo"><h3 class="panel-title">Please Sign up</h3>
+			 	</div>
+			 	<br/>
+			  	<div class="panel-body">
+			    	<form method="post" onsubmit="return validatePassword()">
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" type="text" name="email" placeholder="E-Mail" required>
+			    		</div>
+			    		<div class="form-group">
+			    		    <input class="form-control" type="text" name="username" placeholder="Gebruikersnaam" required>
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" type="password" name="password" id="passwordsignup" placeholder="Wachtwoord" required>
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
+			    		</div>
+			    		<input class="btn btn-dark btn-success btn-block" type="submit" name="submitsignup" id="submitsignup" class="myButton" value="Sign up">
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>';
 }
 
 
@@ -81,6 +112,13 @@ if (isset($_SESSION['user_ID'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <title>Know It All</title>
 </head>
 <body>
