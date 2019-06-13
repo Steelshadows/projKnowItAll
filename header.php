@@ -5,6 +5,9 @@
  * Date: 5/22/2019
  * Time: 02:24 PM
  */
+$session = null;
+if (isset($_SESSION['user_ID'])) {
+}
 ?>
 
 <header>
