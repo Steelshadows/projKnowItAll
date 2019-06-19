@@ -1,4 +1,5 @@
 <?php
+
 include 'conection.php';
 if(isset($_SESSION['user_ID'])){
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
