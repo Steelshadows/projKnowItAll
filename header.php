@@ -37,7 +37,7 @@ function account()
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="weetjes.php">Weetjes</a>
                 </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Link 2</a>
+                <li class="nav-item"> <a class="nav-link" href="posten.php">Zelf Insturen</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a>
                 </li>
