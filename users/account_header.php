@@ -33,7 +33,7 @@ if (isset($_SESSION['user_ID'])) {
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <?=$inloggen?>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="<?=$_SESSION['username']?>.php">Mijn account</a>
                         <?=$uitloggen?>
                     </div>
                 </li>

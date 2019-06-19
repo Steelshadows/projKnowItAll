@@ -13,6 +13,18 @@ if (isset($_SESSION['user_ID'])) {
                   <a class="dropdown-item" href="uitloggen.php">Uitloggen</a>';
     $inloggen = null;
 }
+
+function account()
+{
+    $link;
+    if (isset($_SESSION['username'])) {
+        $user = $_SESSION['username'];
+        $link = "users/$user.php";
+    } else {
+        $link = "login.php";
+    }
+    return $link;
+}
 ?>
 
 <header>
@@ -33,7 +45,7 @@ if (isset($_SESSION['user_ID'])) {
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <?=$inloggen?>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="<?php echo account()?>">Mijn account</a>
                         <?=$uitloggen?>
                     </div>
                 </li>

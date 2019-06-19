@@ -20,8 +20,19 @@ session_start();
     <meta name="theme-color" content="#ffffff">
     <title>Know It All</title>
 </head>
-<body>
 <?php include "account_header.php"; ?>
+<body>
+  <div class="accountcontainer">
+    <img class="accountimg">
+    <p class="accountuser">User</p>
+    <p class="accountbio">Lorem ipsum dolor sit amet.</p>
+  </div>
+  <div class="accountweetjes">
+    <p class="accountweetjestatus">Weetjes status:</p>
+    <div class="accountstatcont">
+      <p class="accountstatus">Test</p>
+    </div>
+  </div>
 <?php include "../footer.php"; ?>
 </body>
 </html>
