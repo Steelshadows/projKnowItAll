@@ -437,3 +437,60 @@ input{
         margin-top: 80px;
     }
 }
+
+/* begin account pagina styling */
+.accountcontainer{
+  background-color: whitesmoke;
+  position: relative;
+    top: 80px;
+    left: 10%;
+  width: 50%;
+  height: 400px;
+}
+
+.accountimg{
+  width: 25%;
+  height: 200px;
+}
+
+.accountuser{
+  position: relative;
+    left: 30%;
+    bottom: 40%;
+  width: 40%;
+}
+
+.accountbio{
+  position: relative;
+    left: 30%;
+    bottom: 40%;
+  width: 40%;
+}
+
+.accountweetjes{
+  background-color: whitesmoke;
+  width: 30%;
+  height: 280px;
+  position: relative;
+    left: 60%;
+    bottom: 320px;
+}
+
+.accountweetjestatus{
+  position: relative;
+    top: 38px;
+}
+
+.accountstatcont{
+  width: 90%;
+  height: 235px;
+}
+
+.accountstatus{
+  position: relative;
+    top: 35px;
+  width: 100%;
+  height: 40px;
+}
+
+/* einde account pagina styling */
