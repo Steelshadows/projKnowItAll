@@ -42,7 +42,7 @@ if (isset($_POST['submitsignup'])) {
 }
 
 if (isset($_SESSION['user_ID'])) {
-<<<<<<< HEAD
+
 //    echo $_SESSION['user_ID'];
 
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
@@ -54,7 +54,7 @@ if (isset($_SESSION['user_ID'])) {
 //        var_dump($row);
     }
     $message .= '<br>welkom, '.$username;
-=======
+
     // //    echo $_SESSION['user_ID'];
 //
 //     $usernameSQL='SELECT `gebruikersnaam` FROM `knowitall_gebruikers` WHERE `gebruiker_ID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
@@ -67,19 +67,6 @@ if (isset($_SESSION['user_ID'])) {
 //     }
     $message = $message . 'U bent al ingelogd';
 } else {
-//    $form = '<div class="logincontainer">
-//    <p class="logintitle">Signup</p>
-//    <div id="signup">
-//        <form class="signupform" method="post" onsubmit="return validatePassword()">
-//            <input type="text" name="email" placeholder="E-Mail" required>
-//            <input type="text" name="username" placeholder="Gebruikersnaam" required>
-//            <input type="password" name="password" id="passwordsignup" placeholder="Wachtwoord" required>
-//            <input type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
-//            <input type="submit" name="submitsignup" id="submitsignup" class="myButton" value="Sign up">
-//            <a class="myButton signbut" href="login.php">Login instead</a>
-//        </form>
-//    </div>
-//  </div>';
     $form = '<div class="logincontainer">
     <div class="loginrow">
 		<div class="col-md-4 col-md-offset-4">
@@ -111,7 +98,7 @@ if (isset($_SESSION['user_ID'])) {
 		</div>
 	</div>
 </div>';
->>>>>>> 8957df55a708b6f12ab26ad95a891c38e85de3c5
+
 }
 $message .= "</div>";
 
@@ -137,25 +124,12 @@ $message .= "</div>";
 </head>
 <body>
 <?php include "header.php"; ?>
-<<<<<<< HEAD
-<div class="logincontainer">
-  <p class="logintitle">Signup</p>
-  <div id='signup'>
-      <form class="signupform" method="post" onsubmit="return validatePassword()">
-          <input type="text" name="email" placeholder="E-Mail" required>
-          <input type="text" name="username" placeholder="Gebruikersnaam" required>
-          <input type="password" name="password" id="passwordsignup" placeholder="Wachtwoord" required>
-          <input type="password" name="passwordCheck" placeholder="Herhaling wachtwoord" id="passwordCheck" required>
-          <input type="submit" name="submitsignup" id="submitsignup" class="myButton" value="Sign up">
-          <a class="myButton signbut" href="login.php">Login instead</a>
-      </form>
-  </div>
-</div>
+
 <?php echo $message?>
-=======
+
 <?=$form?>
 <?php echo $message . '</div>'?>
->>>>>>> 8957df55a708b6f12ab26ad95a891c38e85de3c5
+
 <?php include "footer.php"; ?>
 <script src="script/script.js"></script>
 </body>

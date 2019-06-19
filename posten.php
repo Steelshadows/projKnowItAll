@@ -1,5 +1,5 @@
 <?php
-include '../conection.php';
+include 'conection.php';
 if(isset($_SESSION['user_ID'])){
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
     $result = $conn->query($usernameSQL);
@@ -10,7 +10,7 @@ if(isset($_SESSION['user_ID'])){
 
 $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'allowAnonymousPosting\'';
 $anonypost = '';
-$welcome = "<p><a href='../login/login.php'>log in</a> om te posten</p>";
+$welcome = "<p><a href='login/login.php'>log in</a> om te posten</p>";
 $result = $conn->query($anonypostSQL);
 while($row = $result->fetch_assoc()) {
     $anonypost = $row['value'];
@@ -53,7 +53,7 @@ if(isset($_POST['submitPost'])){
             $UID = 00;
         }
     }
-    else{die('anonymous posting disabled, <a href="../login/login.php">login</a> to try again');}
+    else{die('anonymous posting disabled, <a href="login/login.php">login</a> to try again');}
 
     $sql = '
     INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ? , ? , ? , ? , ?)
@@ -85,9 +85,23 @@ if(isset($_POST['submitPost'])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <title>Document</title>
 </head>
+</head>
 <body>
+
+<?php include 'header.php'; ?>
 <?=$welcome?>
+<?php include 'footer.php' ?>
 </body>
 </html>
