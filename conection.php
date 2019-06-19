@@ -2,7 +2,7 @@
 session_start();
 $servername = "localhost";
 $usernamesqllogin = "root";
-$passwordsqllogin = "Ditiseenwachtwoord";
+$passwordsqllogin = "";
 $dbname = "knowitall";
 $conn = new mysqli($servername, $usernamesqllogin, $passwordsqllogin, $dbname);
 if (!$conn) {
