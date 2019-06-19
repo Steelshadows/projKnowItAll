@@ -28,10 +28,12 @@ SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`
 FROM `knowitall_posts` 
 LEFT JOIN `knowitall_gebruikers` 
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
-ORDER BY \'Status\' 
+ORDER BY 
+    `Status` = \'Denied\',
+    `Status` = \'Approved\',
+    `Status` = \'Pending\'
+    ASC 
 ';
-//WHERE DATE_FORMAT(`Date`, '%m-%d') = '.date("Y-m-d").'
-echo date("Y-m-d");
 $results = '';
 
 $result = $conn->query($usernameSQL);
@@ -63,7 +65,7 @@ if ($result->num_rows > 0) {
             $status = '
     <select name="Status">
         <option value="Approved">Approved</option>
-        <option value="Pending" selected>Pending</option>
+        <option value="Pending" disabled selected>Pending</option>
         <option value="Denied">Denied</option>
     </select>';
         }
@@ -71,7 +73,7 @@ if ($result->num_rows > 0) {
             $status = '
     <select name="Status">
         <option value="Approved">Approved</option>
-        <option value="Pending">Pending</option>
+        <option disabled value="Pending">Pending</option>
         <option value="Denied" selected>Denied</option>
     </select>';
         }
@@ -79,7 +81,7 @@ if ($result->num_rows > 0) {
             $status = '
     <select name="Status">
         <option value="Approved" selected>Approved</option>
-        <option value="Pending">Pending</option>
+        <option disabled value="Pending">Pending</option>
         <option value="Denied">Denied</option>
     </select>';
         }
@@ -89,7 +91,7 @@ if ($result->num_rows > 0) {
     <select name="Status" required>
         <option disabled selected>ERROR_'.$row['Status'].'</option>
         <option value="Approved">Approved</option>
-        <option value="Pending">Pending</option>
+        <option disabled value="Pending">Pending</option>
         <option value="Denied">Denied</option>
     </select>';
         }
