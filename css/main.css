@@ -493,4 +493,29 @@ input{
   height: 40px;
 }
 
+.post-section {
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.post-section button {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.post-section input {
+    margin: 5px;
+}
+
+.post-section textarea {
+      resize: none;
+      width: 580px;
+      height: 200px;
+      margin: 0 auto;
+  }
+
+.post-section h2 {
+    margin-bottom: 20px;
+}
 /* einde account pagina styling */
