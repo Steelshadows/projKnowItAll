@@ -1,37 +1,39 @@
 <?php
-session_start();
 
-if (isset($_SESSION['sessionid']) && $_SESSION['sessionid'] == session_id()) {
-    function singleQuery($query, $arr, $param)
-    {
+include("conection.php");
+
+function singleQuery($query, $arr, $param)
+{
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param($param, ... $arr);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function resultQuery($query, $arr, $param)
+{
+    if (isset($arr) && isset($param)) {
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param($param, ... $arr);
         $stmt->execute();
-        $stmt->close();
+        $result = $stmt->get_result();
+    } else {
+        $stmt = $this->conn->query($query);
+        $result = $stmt;
     }
-
-    function resultQuery($query, $arr, $param)
-    {
-        if (isset($arr) && isset($param)) {
-            $stmt = $this->conn->prepare($query);
-            $stmt->bind_param($param, ... $arr);
-            $stmt->execute();
-            $result = $stmt->get_result();
-        } else {
-            $stmt = $this->conn->query($query);
-            $result = $stmt;
-        }
-        if ($result->num_rows == 0) {
-            session_destroy();
-        }
-        $row = [];
-
-        while ($rows = $result->fetch_assoc()) {
-            array_push($row, $rows);
-        }
-        $stmt->close();
-        return $row;
+    if ($result->num_rows == 0) {
+        session_destroy();
     }
+    $row = [];
+
+    while ($rows = $result->fetch_assoc()) {
+        array_push($row, $rows);
+    }
+    $stmt->close();
+    return $row;
+}
+
+if (isset($_SESSION['sessionid']) && $_SESSION['sessionid'] == session_id()) {
 } else {
     header("location: login.php");
 }
