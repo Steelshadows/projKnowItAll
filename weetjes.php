@@ -54,8 +54,8 @@ $cal = '
     window.location = \'weetjes.php?date=\'+this.value
 " format="Y-m-d">
 ';
-if($PostList == '<div></div>'){
-    $PostList = '<div>er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($_GET['date'])).'</div>';
+if($PostList == '<div class="weetjecontainer"></div>'){
+    $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';
 }
 ?>
 
@@ -81,37 +81,6 @@ if($PostList == '<div></div>'){
 <body>
 
 <?php include "header.php";?>
-<?php
-
-
-    $query = "SELECT Title, Post, Date FROM knowitall_posts";
-
-    $stmt = mysqli_query($conn, $query);
-
-
-    while ($row = mysqli_fetch_assoc($stmt)) {
-
-        $title = $row["Title"];
-        $post = $row["Post"];
-        $date = $row["Date"];
-        $img = $row["image"];
-
-        echo <<< MARKER
-            <div class="weetjecontainer">
-                <div class="weetje-item">
-                    <img src="$img" alt="x" width="145" />
-                     <span>
-                        <span class="lead title-weetje">$title</span>
-                        <span class="content-weetje">$post</span>
-                        <span style="float:right;" class="date-weetje">$date</span>
-                    </span>
-                </div>
-            </div>
-MARKER;
-
-    }
-
-?>
 <?=$cal?>
 <?=$PostList?>
 <?php include "footer.php";?>
