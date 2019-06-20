@@ -102,7 +102,7 @@ input{
 
 .topweetjes{
     height: 70%;
-    width: 15%;
+    width: auto;
     margin-left: 25px;
     font-weight: bold;
     padding: 10px;
@@ -115,7 +115,6 @@ input{
 }
 
 .topweetjecontainer{
-
 }
 
 .space{
@@ -169,6 +168,19 @@ input{
     position: relative;
     top: 40px;
     right: 30px;
+}
+
+.homecontrow{
+    padding: 10px;
+    font-size: 25px;
+    border: 1px solid #d7d7db;
+    background-color: whitesmoke;
+    margin-bottom: 10px;
+    height: 250px;
+}
+
+.homeimgbot{
+    width: 100px;
 }
 
 
@@ -493,4 +505,29 @@ input{
   height: 40px;
 }
 
+.post-section {
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.post-section button {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.post-section input {
+    margin: 5px;
+}
+
+.post-section textarea {
+      resize: none;
+      width: 580px;
+      height: 200px;
+      margin: 0 auto;
+  }
+
+.post-section h2 {
+    margin-bottom: 20px;
+}
 /* einde account pagina styling */
