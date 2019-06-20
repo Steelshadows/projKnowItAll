@@ -488,10 +488,10 @@ input{
 
 /* begin account pagina styling */
 .accountcontainer{
+  margin-top: 5%;
+  margin-left: 10%;
   background-color: whitesmoke;
-  position: relative;
-    top: 80px;
-    left: 10%;
+  float: left;
   width: 50%;
   height: 400px;
 }
@@ -516,12 +516,11 @@ input{
 }
 
 .accountweetjes{
+  margin-top: 5%;
   background-color: whitesmoke;
   width: 30%;
-  height: 280px;
-  position: relative;
-    left: 60%;
-    bottom: 320px;
+  height: 400px;
+  float: left;
 }
 
 .accountweetjestatus{
@@ -540,6 +539,8 @@ input{
   width: 100%;
   height: 40px;
 }
+
+/* einde account pagina styling */
 
 .post-section {
     width: 600px;
@@ -566,4 +567,3 @@ input{
 .post-section h2 {
     margin-bottom: 20px;
 }
-/* einde account pagina styling */
