@@ -5,8 +5,58 @@
  * Date: 6/6/2019
  * Time: 09:17 AM
  */
-
 include 'conection.php';
+
+$searchDate = date("Y-m-d");
+if(isset($_GET['date'])){
+    $searchDate = date("Y-m-d", strtotime($_GET['date']));
+}
+$usernameSQL='
+SELECT `Title`,`Post`,`Date`,`knowitall_gebruikers`.`username` AS \'username\' 
+FROM `knowitall_posts` 
+LEFT JOIN `knowitall_gebruikers` 
+ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
+WHERE `Status` = \'Approved\' AND `Date` = ?
+';
+$stmt = $conn->prepare($usernameSQL);
+$stmt->bind_param('s',$searchDate);
+if($stmt->execute()) {
+    $result = $stmt->get_result();
+    $PostList = '<div class="weetjecontainer">';
+    while ($row = $result->fetch_assoc()) {
+        if ($row['username'] != NULL) {
+            $usname = $row['username'];
+        } else {
+            $usname = 'ANONYMOUS';
+        }
+        $PostList .= '<div class="weetje-item">';
+
+        $PostList .= '<div>User: ';
+        $PostList .= $usname;
+        $PostList .= '</div>';
+
+        $PostList .= '<div class="lead title-weetje">Titel: ';
+        $PostList .= $row['Title'];
+        $PostList .= '</div>';
+
+        $PostList .= '<div class="content-weetje">Datum: ';
+        $PostList .= $row['Date'];
+        $PostList .= '<br>';
+        $PostList .= $row['Post'];
+        $PostList .= '</div>';
+
+        $PostList .= '</div>';
+    }
+}
+$PostList .= '</div>';
+$cal = '
+<input class="inputdate" type="date" value="'.$searchDate.'" onchange="
+    window.location = \'weetjes.php?date=\'+this.value
+" format="Y-m-d">
+';
+if($PostList == '<div></div>'){
+    $PostList = '<div>er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($_GET['date'])).'</div>';
+}
 ?>
 
 <!doctype html>
@@ -31,7 +81,6 @@ include 'conection.php';
 <body>
 
 <?php include "header.php";?>
-
 <?php
 
 
@@ -63,8 +112,8 @@ MARKER;
     }
 
 ?>
-
-
+<?=$cal?>
+<?=$PostList?>
 <?php include "footer.php";?>
 </body>
 </html>
