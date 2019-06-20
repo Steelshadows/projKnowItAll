@@ -5,6 +5,7 @@
  * Date: 6/5/2019
  * Time: 12:44 PM
  */
+ session_start();
 ?>
 
 <!doctype html>
