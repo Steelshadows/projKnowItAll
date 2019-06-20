@@ -1,4 +1,5 @@
 <?php
+
 include 'conection.php';
 if(isset($_SESSION['user_ID'])){
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
@@ -22,15 +23,19 @@ if ($anonypost == 'True'||isset($username)){
         $welcome = '<p>hallo ANONYMOUS</p>';
     }
     $welcome .= '
-<button onclick="document.getElementById(\'posting\').style = \'display:block;\';this.style = \'display:none;\'">post</button>
-<div id=\'posting\' style="display: none">
+<div class="post-section">
+    <button class="btn btn-dark" onclick="document.getElementById(\'posting\').style = \'display:block;\';this.style = \'display:none;\'">Post een weetje</button>
+
+</div>
+<div id=\'posting\' style="display: none;" class="post-section">
     <form method="post">
-        <div><input type="text" name="Titel" placeholder="Titel" required></div>
-        <div><textarea id="message" name="message" placeholder="weetje"></textarea></div>
-        <div><input type="date" name="date" id="password" placeholder="Wachtwoord" required></div>
-        <div><input type="submit" name="submitPost" id="submitPost" style="display: none;"></div>
+        <h2>Post je eigen weetje!</h2>
+        <div><input class="form-control" type="text" name="Titel" placeholder="Titel" required></div>
+        <div><textarea class="md-textarea form-control" id="message" name="message" placeholder="weetje"></textarea></div>
+        <div><input class="form-control" type="date" name="date" required></div>
+        <div><input class="form-control" type="submit" name="submitPost" id="submitPost" style="display: none;"></div>
     </form>
-    <button onclick="
+    <button class="btn btn-dark" style="margin-top: 20px " onclick="
         if(document.getElementById(\'message\').value != \'\'){
             document.getElementById(\'submitPost\').click()}
         else{alert(\'weetje is leeg\')}">submit

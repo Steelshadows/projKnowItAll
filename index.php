@@ -65,7 +65,7 @@
                     <div class="space">#7: </div>
                     <div class="space">#8: </div>
                     <div class="space">#9: </div>
-                    <div class="space">#10: Halo naar pc. </div>
+                    <div class="space">#10: Halo naar pc mini tekst. </div>
                 </div>
             </div>
             <div class="resp">
@@ -96,26 +96,29 @@
         <div>
             <div class="homeline"></div>
             <p class="homep">Recente weetjes</p>
-            <div class="homecontcolumn">
-                <div class="homecontrow">
-                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                    <p>Titel</p>
-                    <p class="homeweetje">Content</p>
+            <div class="recentweetjes">
+                <div class="homecontcolumn">
+                    <div class="homecontrow">
+                        <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                        <p>Titel</p>
+                        <p class="homeweetje">Content</p>
+                    </div>
+                    <div class="homeline2"></div>
+                    <div class="homecontrow">
+                        <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                        <p>Titel</p>
+                        <p class="homeweetje">Content</p>
+                    </div>
+                    <div class="homeline2"></div>
+                    <div class="homecontrow">
+                        <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                        <p>Titel</p>
+                        <p class="homeweetje">Content</p>
+                    </div>
+                    <div class="homeline2"></div>
                 </div>
-                <div class="homeline2"></div>
-                <div class="homecontrow">
-                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                    <p>Titel</p>
-                    <p class="homeweetje">Content</p>
-                </div>
-                <div class="homeline2"></div>
-                <div class="homecontrow">
-                    <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                    <p>Titel</p>
-                    <p class="homeweetje">Content</p>
-                </div>
-                <div class="homeline2"></div>
             </div>
+
         </div>
 
     </main>
