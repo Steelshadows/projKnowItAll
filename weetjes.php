@@ -5,6 +5,8 @@
  * Date: 6/6/2019
  * Time: 09:17 AM
  */
+
+include 'conection.php';
 ?>
 
 <!doctype html>
@@ -30,16 +32,38 @@
 
 <?php include "header.php";?>
 
-<!--Dit gedeelte wordt in een while loop elke keer gepusht wanneer hij een weetje vind-->
-<div class="weetjecontainer">
-    <div class="weetje-item">
-        <img src="img/placeholder.png" alt="x" width="145" />
-        <span>
-            <span class="lead title-weetje">Title van het weetje <!-- $titel --></span>
-            <span class="content-weetje">Dit is een Div uit een whileloop uit de weetjes db <!-- $weetje --></span>
-        </span>
-    </div>
-</div>
+<?php
+
+
+    $query = "SELECT Title, Post, Date FROM knowitall_posts";
+
+    $stmt = mysqli_query($conn, $query);
+
+
+    while ($row = mysqli_fetch_assoc($stmt)) {
+
+        $title = $row["Title"];
+        $post = $row["Post"];
+        $date = $row["Date"];
+        $img = $row["image"];
+
+        echo <<< MARKER
+            <div class="weetjecontainer">
+                <div class="weetje-item">
+                    <img src="$img" alt="x" width="145" />
+                     <span>
+                        <span class="lead title-weetje">$title</span>
+                        <span class="content-weetje">$post</span>
+                        <span style="float:right;" class="date-weetje">$date</span>
+                    </span>
+                </div>
+            </div>
+MARKER;
+
+    }
+
+?>
+
 
 <?php include "footer.php";?>
 </body>

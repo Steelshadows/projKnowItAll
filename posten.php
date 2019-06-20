@@ -34,11 +34,13 @@ if ($anonypost == 'True'||isset($username)){
         <div><textarea class="md-textarea form-control" id="message" name="message" placeholder="weetje"></textarea></div>
         <div><input class="form-control" type="date" name="date" required></div>
         <div><input class="form-control" type="submit" name="submitPost" id="submitPost" style="display: none;"></div>
+        <div><input type="file" name="image" required /></div>
     </form>
+    
     <button class="btn btn-dark" style="margin-top: 20px " onclick="
         if(document.getElementById(\'message\').value != \'\'){
             document.getElementById(\'submitPost\').click()}
-        else{alert(\'weetje is leeg\')}">submit
+        else{alert(\'weetje is leeg\')}">insturen
     </button>
 </div>
 
@@ -49,6 +51,9 @@ if(isset($_POST['submitPost'])){
     $titel = htmlspecialchars($_POST['Titel']);
     $message = htmlspecialchars($_POST['message']);
     $Date = htmlspecialchars($_POST['date']);
+
+//    $file = file_put_contents("images.json", ' " ' . base64_encode($_POST["image"]) . ' " ' . ' , ');
+
     $status = 'Pending';
     if ($anonypost == 'True'||isset($username)){
         if (isset($username)){
@@ -60,8 +65,10 @@ if(isset($_POST['submitPost'])){
     }
     else{die('anonymous posting disabled, <a href="login/login.php">login</a> to try again');}
 
+
+
     $sql = '
-    INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ? , ? , ? , ? , ?)
+    INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ?, ? , ? , ? , ?)
     ';
     $statement = $conn->prepare($sql);
     $statement->bind_param('sssss',$titel, $message,$Date,$status,$UID);
