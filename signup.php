@@ -30,9 +30,15 @@ if (isset($_POST['submitsignup'])) {
             $UID = (int) $row['USERID'];
             $user = $row['username'];
         }
+
+        $query = "INSERT INTO `knowitall_account` (`bio`, `avatar`, `USERID`) VALUES ('U kunt hier iets over uwzelf typen', 'img/default-avatar.png', $UID)";
+        $conn->query($query);
+
         $_SESSION['user_ID'] = $UID;
         $_SESSION['username'] = $user;
         $_SESSION['sessionid'] = session_id();
+
+
 
         header("location: index.php");
     }
