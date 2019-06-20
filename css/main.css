@@ -146,21 +146,26 @@ input{
 
 .homeimgbot{
     margin-right: 15px;
-    width: 40%;
-    height: 80%;
+    width: 50% !important;
+    height: 60% !important;
+}
+
+.recentweetjes{
+    margin: auto;
+    width: 70%;
+    text-align: center;
 }
 
 .homecontcolumn{
-    position: relative;
-    left: 25%;
     justify-content: flex-start;
     flex-direction: column;
+    width: 100%;
 }
 
 .homecontrow{
     display: flex;
     height: 30%;
-    width: 50%;
+    width: 100%;
     flex-direction: row;
 }
 
@@ -176,13 +181,24 @@ input{
     border: 1px solid #d7d7db;
     background-color: whitesmoke;
     margin-bottom: 10px;
-    height: 250px;
+    height: auto;
 }
 
 .homeimgbot{
-    width: 100px;
+    width: 240px !important;
+    height: 135px !important;
 }
 
+.top1{
+    width: 30%;
+    text-align: left;
+}
+
+.top2{
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+}
 
 /*Contact Section*/
 
@@ -403,17 +419,17 @@ input{
         margin-bottom: 0;
     }
 
-    .div1{
+    .div1 {
         width: 100%;
         height: 300px;
         margin-bottom: 10px;
     }
 
-    .topweetjes{
+    .topweetjes {
         display: none;
     }
 
-    .resp{
+    .resp {
         display: block;
         width: 100%;
         border: solid black 1px;
@@ -433,8 +449,23 @@ input{
         clear: both;
     }
 
-    .columntext1{
+    .columntext1 {
         margin-left: 25px;
+    }
+
+    .homeimgbot {
+        width: 170px !important;
+        height: 100px !important;
+    }
+
+    .recentweetjes{
+        margin: auto;
+        width: 90%;
+        text-align: center;
+    }
+
+    .top1{
+        width: 40%;
     }
 }
 
