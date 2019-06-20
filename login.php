@@ -19,6 +19,7 @@ if (isset($_POST['submitlogin'])) {
             $message .= 'login successfull';
             $_SESSION['user_ID'] = $row['USERID'];
             $_SESSION['username'] = $row['username'];
+            $_SESSION['sessionid'] = session_id();
             header("location: index.php");
         };
     };
@@ -49,8 +50,8 @@ if (isset($_SESSION['user_ID'])) {
 //            <a class="myButton signbut" href="signup.php">Sign up instead</a>
 //        </form>
 //    </div>
-//  </div>
-  $form = '<div class="logincontainer">
+    //  </div>
+    $form = '<div class="logincontainer">
     <div class="loginrow">
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">

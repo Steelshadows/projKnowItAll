@@ -17,9 +17,8 @@ if (isset($_SESSION['user_ID'])) {
 function account()
 {
     $link;
-    if (isset($_SESSION['username'])) {
-        $user = $_SESSION['username'];
-        $link = "users/$user.php";
+    if (isset($_SESSION['sessionid'])) {
+        $link = "account.php";
     } else {
         $link = "login.php";
     }

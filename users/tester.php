@@ -24,7 +24,7 @@
         <body>
           <div class="accountcontainer">
             <img class="accountimg" src="../img/default-avatar.png">
-            <p class="accountuser">henk</p>
+            <p class="accountuser">tester</p>
             <p class="accountbio">U kunt hier iets over uw zelf typen.</p>
           </div>
           <div class="accountweetjes">

@@ -16,6 +16,7 @@ body {
 input{
   display: block;
 }
+
 /*eind Algemene styling  */
 /*begin Home styling */
 .homemessage{
@@ -359,7 +360,11 @@ input{
   top: 40px;
   left: 160px;
 }
-
+.inputdate{
+    position: relative;
+    top:50px;
+    left:20px;
+}
 /*eind weetjes pagina*/
 
 /*Homepagina responsive*/
