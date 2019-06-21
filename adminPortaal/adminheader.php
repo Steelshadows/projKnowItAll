@@ -60,7 +60,7 @@ function account()
                         <?=$inloggen?>
                         <?=$adminpage?>
 
-                        <a class="dropdown-item" href="<?php echo account()?>">Mijn account</a>
+                        <a class="dropdown-item" href="../<?php echo account()?>">Mijn account</a>
                         <?=$uitloggen?>
                     </div>
                 </li>
