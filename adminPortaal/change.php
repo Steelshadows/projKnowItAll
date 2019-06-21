@@ -277,6 +277,6 @@ $PostList .= '</div>';
     <?=$PostList?>
     <?=$modalsscript?>
 </div>
-
+<?php include "adminfooter.php"; ?>
 </body>
 </html>
