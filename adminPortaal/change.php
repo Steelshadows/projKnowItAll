@@ -267,8 +267,16 @@ $PostList .= '</div>';
 </head>
 <body>
 <?php include "adminheader.php"; ?>
-<?=$results?>
-<?=$PostList?>
-<?=$modalsscript?>
+<div class="headerspace">
+
+</div>
+
+<div class="weetje-results">
+    <p>Weetjes van gebruikers</p>
+    <?=$results?>
+    <?=$PostList?>
+    <?=$modalsscript?>
+</div>
+
 </body>
 </html>

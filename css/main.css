@@ -10,7 +10,7 @@ body {
     margin-bottom: 60px;
     background-image: url("../img/background.png");
     /*background-position: center;*/
-    background-color: #eaeaec;
+
 }
 
 input{
@@ -567,3 +567,22 @@ input{
 .post-section h2 {
     margin-bottom: 20px;
 }
+
+/*admin page css --------------------------------------------------------------------------- */
+
+.headerspace{
+    height: 100px;
+    width: 100%;
+}
+
+.weetje-results{
+    margin: auto;
+}
+
+.flexitem{
+    padding: 20px;
+    margin: 10px;
+    border: solid 1px black;
+}
+
+/* Einde admin page css -------------------------------------------------------------------- */
