@@ -5,9 +5,24 @@
  * Date: 5/22/2019
  * Time: 02:24 PM
  */
+
+include 'conection.php';
+
+$adminpriv = 0;
+if (isset($_SESSION['user_ID'])) {
+    $usernameSQL='SELECT `admin` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
+    $result = $conn->query($usernameSQL);
+    while ($row = $result->fetch_assoc()) {
+        $adminpriv = (int) $row['admin'];
+    }
+}
+$adminpage = null;
 $uitloggen = null;
 $inloggen = '<a class="dropdown-item" href="login.php">Login</a>
              <a class="dropdown-item" href="signup.php">Registreren</a>';
+if ($adminpriv == 1){
+    $adminpage = '<a class="dropdown-item" href="adminPortaal/change.php">Admin Portaal</a>';
+}
 if (isset($_SESSION['user_ID'])) {
     $uitloggen = '<div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="uitloggen.php">Uitloggen</a>';
@@ -16,7 +31,7 @@ if (isset($_SESSION['user_ID'])) {
 
 function account()
 {
-    $link;
+    $link = null;
     if (isset($_SESSION['sessionid'])) {
         $link = "account.php";
     } else {
@@ -44,6 +59,8 @@ function account()
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <?=$inloggen?>
+                        <?=$adminpage?>
+
                         <a class="dropdown-item" href="<?php echo account()?>">Mijn account</a>
                         <?=$uitloggen?>
                     </div>
