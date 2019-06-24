@@ -5,34 +5,36 @@
  * Date: 6/12/2019
  * Time: 2:34 PM
  */
+ session_start();
 include '../conection.php';
 include "admincheck.php";
 
-if(isset($_POST['submit_change'])){
+if (isset($_POST['submit_change'])) {
     $title = $_POST['Title'];
     $Post = $_POST['Post'];
     $Status = $_POST['Status'];
     $editPost = $_POST['postID'];
-    if (isset($Status)){
+    if (isset($Status)) {
         $editsql = "UPDATE `knowitall_posts` SET `Title` = ? , `Post` = ? , `Status` = ? WHERE `knowitall_posts`.`ID` = ?";
         $statement = $conn->prepare($editsql);
-        $statement->bind_param('ssss',$title,$Post,$Status,$editPost);
-        if(!$statement->execute()){
+        $statement->bind_param('ssss', $title, $Post, $Status, $editPost);
+        if (!$statement->execute()) {
             echo "er ging iets mis";
         }
+    } else {
+        echo "status niet correct";
     }
-    else{ echo "status niet correct";}
 }
 $usernameSQL='
-SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\' 
-FROM `knowitall_posts` 
-LEFT JOIN `knowitall_gebruikers` 
+SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\'
+FROM `knowitall_posts`
+LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
-ORDER BY 
+ORDER BY
     `Status` = \'Denied\',
     `Status` = \'Approved\',
     `Status` = \'Pending\'
-    ASC 
+    ASC
 ';
 $results = '';
 
@@ -42,12 +44,10 @@ if ($result->num_rows > 0) {
     $results = "<div class='flexing'>";
     $modals = '';
     $PostList = '<div>';
-    while($row = $result->fetch_assoc()) {
-
-        if($row['username']!=NULL){
+    while ($row = $result->fetch_assoc()) {
+        if ($row['username']!=null) {
             $usname = $row['username'];
-        }
-        else {
+        } else {
             $usname = 'ANONYMOUS';
         }
 
@@ -61,33 +61,30 @@ if ($result->num_rows > 0) {
 
 
 
-        if ($row['Status'] == 'Pending'){
+        if ($row['Status'] == 'Pending') {
             $status = '
     <select name="Status">
         <option value="Approved">Approved</option>
         <option value="Pending" disabled selected>Pending</option>
         <option value="Denied">Denied</option>
     </select>';
-        }
-        else if ($row['Status'] == 'Denied'){
+        } elseif ($row['Status'] == 'Denied') {
             $status = '
     <select name="Status">
         <option value="Approved">Approved</option>
         <option disabled value="Pending">Pending</option>
         <option value="Denied" selected>Denied</option>
     </select>';
-        }
-        else if ($row['Status'] == 'Approved'){
+        } elseif ($row['Status'] == 'Approved') {
             $status = '
     <select name="Status">
         <option value="Approved" selected>Approved</option>
         <option disabled value="Pending">Pending</option>
         <option value="Denied">Denied</option>
     </select>';
-        }
-        else{
+        } else {
             $status = '
-    
+
     <select name="Status" required>
         <option disabled selected>ERROR_'.$row['Status'].'</option>
         <option value="Approved">Approved</option>
@@ -152,7 +149,7 @@ var btn'.$row['ID'].' = document.getElementById("'.$row['ID'].'");
 // Get the <span> element that closes the modal
 var span'.$row['ID'].' = document.getElementById("close'.$row['ID'].'");
 
-// When the user clicks on the button, open the modal 
+// When the user clicks on the button, open the modal
 btn'.$row['ID'].'.onclick = function() {
   modal'.$row['ID'].'.style.display = "block";
 }
@@ -168,12 +165,12 @@ window.onclick = function(event) {
     modal'.$row['ID'].'.style.display = "none";
   }
 }
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         ';
     }
     $results .= "</div>";
