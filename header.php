@@ -7,7 +7,7 @@
  */
 
 include 'conection.php';
-
+session_start();
 $adminpriv = 0;
 if (isset($_SESSION['user_ID'])) {
     $usernameSQL='SELECT `admin` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
@@ -20,7 +20,7 @@ $adminpage = null;
 $uitloggen = null;
 $inloggen = '<a class="dropdown-item" href="login.php">Login</a>
              <a class="dropdown-item" href="signup.php">Registreren</a>';
-if ($adminpriv == 1){
+if ($adminpriv == 1) {
     $adminpage = '<a class="dropdown-item" href="adminPortaal/change.php">Admin Portaal</a>';
 }
 if (isset($_SESSION['user_ID'])) {
@@ -39,8 +39,9 @@ function account()
     }
     return $link;
 }
-?>
+$link = 'href="' . account() . '"';
 
+$header = <<<HTML
 <header>
     <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
         <img src="img/kia_logo.png" width="28" alt="logo">&nbsp;<a class="navbar-brand" href="index.php">KnowItAll - Dagelijkse weetjes!</a>
@@ -58,14 +59,14 @@ function account()
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <?=$inloggen?>
-                        <?=$adminpage?>
+                        $inloggen $adminpage
 
-                        <a class="dropdown-item" href="<?php echo account()?>">Mijn account</a>
-                        <?=$uitloggen?>
+                        <a class="dropdown-item" $link >Mijn account</a>
+                        $uitloggen
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
+HTML;

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $servername = "localhost";
 $usernamesqllogin = "root";
 $passwordsqllogin = "";

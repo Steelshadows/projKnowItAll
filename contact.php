@@ -5,7 +5,7 @@
  * Date: 6/5/2019
  * Time: 12:44 PM
  */
- session_start();
+ include 'header.php';
 ?>
 
 <!doctype html>
@@ -30,7 +30,7 @@
     <title>Contact</title>
 </head>
 <body>
-<?php include "header.php" ?>
+<?=$header?>
 
 <div class="parallax"></div>
 

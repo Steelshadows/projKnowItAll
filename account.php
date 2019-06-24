@@ -1,6 +1,6 @@
 <?php
 
-include("conection.php");
+include 'header.php';
 function singleQuery($query, $arr, $param, $conn)
 {
     $stmt = $conn->prepare($query);
@@ -94,7 +94,7 @@ HTML;
     header("location: login.php");
 }
 echo $html;
-include "header.php";
+echo $header;
 echo $html2;
 echo $stats;
 echo $html3;

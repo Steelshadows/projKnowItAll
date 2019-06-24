@@ -1,10 +1,10 @@
 <?php
 
-include 'conection.php';
-if(isset($_SESSION['user_ID'])){
+include 'header.php';
+if (isset($_SESSION['user_ID'])) {
     $usernameSQL='SELECT `username` FROM `knowitall_gebruikers` WHERE `USERID` = \''.$conn->real_escape_string($_SESSION['user_ID']).'\'';
     $result = $conn->query($usernameSQL);
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $username = $row['username'];
     }
 }
@@ -13,13 +13,13 @@ $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'al
 $anonypost = '';
 $welcome = "<p><a href='login/login.php'>log in</a> om te posten</p>";
 $result = $conn->query($anonypostSQL);
-while($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) {
     $anonypost = $row['value'];
 }
-if ($anonypost == 'True'||isset($username)){
-    if(isset($username)){
+if ($anonypost == 'True'||isset($username)) {
+    if (isset($username)) {
         $welcome = '<p>hallo '. $username. '</p>';
-    }else{
+    } else {
         $welcome = '<p>hallo ANONYMOUS</p>';
     }
     $welcome .= '
@@ -36,7 +36,7 @@ if ($anonypost == 'True'||isset($username)){
         <div><input class="form-control" type="submit" name="submitPost" id="submitPost" style="display: none;"></div>
         <div><input type="file" name="image" required /></div>
     </form>
-    
+
     <button class="btn btn-dark" style="margin-top: 20px " onclick="
         if(document.getElementById(\'message\').value != \'\'){
             document.getElementById(\'submitPost\').click()}
@@ -47,7 +47,7 @@ if ($anonypost == 'True'||isset($username)){
     ';
 }
 
-if(isset($_POST['submitPost'])){
+if (isset($_POST['submitPost'])) {
     $titel = htmlspecialchars($_POST['Titel']);
     $message = htmlspecialchars($_POST['message']);
     $Date = htmlspecialchars($_POST['date']);
@@ -55,15 +55,15 @@ if(isset($_POST['submitPost'])){
 //    $file = file_put_contents("images.json", ' " ' . base64_encode($_POST["image"]) . ' " ' . ' , ');
 
     $status = 'Pending';
-    if ($anonypost == 'True'||isset($username)){
-        if (isset($username)){
+    if ($anonypost == 'True'||isset($username)) {
+        if (isset($username)) {
             $UID = $_SESSION['user_ID'];
-        }
-        else{
+        } else {
             $UID = 00;
         }
+    } else {
+        die('anonymous posting disabled, <a href="login/login.php">login</a> to try again');
     }
-    else{die('anonymous posting disabled, <a href="login/login.php">login</a> to try again');}
 
 
 
@@ -71,11 +71,10 @@ if(isset($_POST['submitPost'])){
     INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ?, ? , ? , ? , ?)
     ';
     $statement = $conn->prepare($sql);
-    $statement->bind_param('sssss',$titel, $message,$Date,$status,$UID);
-    if (!$statement->execute()){
+    $statement->bind_param('sssss', $titel, $message, $Date, $status, $UID);
+    if (!$statement->execute()) {
         $welcome.= "<div>Failed to add user error: (" . $conn->errno . ") " . $conn->error."</div>";
-    }
-    else{
+    } else {
         $welcome .= "uw weetje word spoedig door ons team gereviewd";
     }
 }
@@ -112,7 +111,7 @@ if(isset($_POST['submitPost'])){
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?=$header?>
 <?=$welcome?>
 <?php include 'footer.php' ?>
 </body>

@@ -1,5 +1,5 @@
 <?php
-include 'conection.php';
+include 'header.php';
 
 $message = '<div class="loginmessage">';
 $form = null;
@@ -102,7 +102,7 @@ $message .= "</div>";
     <title>Know It All</title>
 </head>
 <body>
-<?php include "header.php"; ?>
+<?=$header?>
 
 <?php echo $message?>
 
