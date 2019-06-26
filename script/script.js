@@ -74,18 +74,17 @@ function createModal(post){
   form.appendChild(submit);
   console.log(post.children);
   modale(postModal, document.getElementsByClassName("close")[0]);
-
+  //Zo ziet het form eruit
+  // <div id="postModal" class="modal">
+  //   <div class="modal-content">
+  //     <span class="close">&times;</span>
+  //     <form name="post" id="post" method="post" action="post.php" onsubmit="return checkPost(post)">
+  //       <div>
+  //         <textarea id="modalcont" required type="text" name="content" placeholder="Example..."></textarea>
+  //         <p id="posterror"></p>
+  //       </div>
+  //       <input class="myButton" type="submit" name="submit" value="Post">
+  //     </form>
+  //   </div>
+  // </div>
 }
-
-// <div id="postModal" class="modal">
-//   <div class="modal-content">
-//     <span class="close">&times;</span>
-//     <form name="post" id="post" method="post" action="post.php" onsubmit="return checkPost(post)">
-//       <div>
-//         <textarea id="modalcont" required type="text" name="content" placeholder="Example..."></textarea>
-//         <p id="posterror"></p>
-//       </div>
-//       <input class="myButton" type="submit" name="submit" value="Post">
-//     </form>
-//   </div>
-// </div>

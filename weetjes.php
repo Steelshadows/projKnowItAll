@@ -25,62 +25,60 @@ if ($stmt->execute()) {
     $result = $stmt->get_result();
     $PostList = "<div class='container weetje-container'>Geen weetjes gevonden voor " . $searchDate . "</div>";
     while ($row = $result->fetch_assoc()) {
+        $PostList = null;
 
-            $PostList = null;
+        if ($row['username'] != null) {
+            $username = $row['username'];
+        } else {
+            $username = 'ANONYMOUS';
+        }
+        $title = $row["Title"];
+        $date = $row["Date"];
+        $content = $row["Post"];
+        $image = $row["Image"];
 
-            if ($row['username'] != null) {
-                $username = $row['username'];
-            } else {
-                $username = 'ANONYMOUS';
-            }
-            $title = $row["Title"];
-            $date = $row["Date"];
-            $content = $row["Post"];
-            $image = $row["Image"];
-
-            $PostList .= <<< WEETJE
+        $PostList .= <<< WEETJE
                     <div class="container weetje-container">
                         <div class="weetje-item">
                             <div class="">
-                                    <h4>Titel: $title </h4> 
+                                    <h4>Titel: $title </h4>
                                     <div class="float-right"><img id="myImg" src="$image" alt="X" style="width:100px;max-width:300px"></div>
-                                    <div class="seperator"><small>Ingestuurd door: $username</small></div>  
+                                    <div class="seperator"><small>Ingestuurd door: $username</small></div>
                             </div>
-                            
+
                             <div class="content-weetje">
                                 <div class="post">$content</div>
-                                
+
                             </div>
                         </div>
                     </div>
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
-                    
+
                       <!-- The Close Button -->
                       <span class="close">&times;</span>
-                    
+
                       <!-- Modal Content (The Image) -->
                       <img class="modal-content" id="img01">
-                    
+
                       <!-- Modal Caption (Image Text) -->
                       <div id="caption"></div>
                     </div>
 
 WEETJE;
-
-        }
-
+    }
 
 
 
-$cal = '
+
+    $cal = '
 <input class="inputdate" type="date" value="'.$searchDate.'" onchange="
     window.location = \'weetjes.php?date=\'+this.value
 " format="Y-m-d">
 ';
 
 
-//if ($PostList == '<div class="weetjecontainer"></div>') {
+    //if ($PostList == '<div class="weetjecontainer"></div>') {
 //    $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';
 }
 ?>
