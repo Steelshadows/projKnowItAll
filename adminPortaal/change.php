@@ -5,6 +5,9 @@
  * Date: 6/12/2019
  * Time: 2:34 PM
  */
+
+session_start();
+
 include '../conection.php';
 include "admincheck.php";
 
