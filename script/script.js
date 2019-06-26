@@ -13,7 +13,6 @@ function validatePassword(){
 }
 
 function modale(modal, span) {
-  var btn = document.getElementById("myBtn");
   modal.style.display = "block";
 
   span.onclick = function() {
