@@ -8,7 +8,7 @@ if (isset($_SESSION['user_ID'])) {
         $username = $row['username'];
     }
 }
-
+$error = '<p>';
 $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'allowAnonymousPosting\'';
 $anonypost = '';
 $welcome = "<p><a href='login/login.php'>log in</a> om te posten</p>";
@@ -28,13 +28,13 @@ if ($anonypost == 'True'||isset($username)) {
 
 </div>
 <div id=\'posting\' style="display: none;" class="post-section">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <h2>Post je eigen weetje!</h2>
         <div><input class="form-control" type="text" name="Titel" placeholder="Titel" required></div>
         <div><textarea class="md-textarea form-control" id="message" name="message" placeholder="weetje"></textarea></div>
         <div><input class="form-control" type="date" name="date" required></div>
+        <div><input type="file" name="image" required></div>
         <div><input class="form-control" type="submit" name="submitPost" id="submitPost" style="display: none;"></div>
-        <div><input type="file" name="image" required /></div>
     </form>
 
     <button class="btn btn-dark" style="margin-top: 20px " onclick="
@@ -64,21 +64,51 @@ if (isset($_POST['submitPost'])) {
     } else {
         die('anonymous posting disabled, <a href="login/login.php">login</a> to try again');
     }
+    $target_dir = "img/postpics/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-
-
-    $sql = '
-    INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`) VALUES (NULL, ?, ? , ? , ? , ?)
-    ';
-    $statement = $conn->prepare($sql);
-    $statement->bind_param('sssss', $titel, $message, $Date, $status, $UID);
-    if (!$statement->execute()) {
-        $welcome.= "<div>Failed to add user error: (" . $conn->errno . ") " . $conn->error."</div>";
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
     } else {
-        $welcome .= "uw weetje word spoedig door ons team gereviewd";
+        $error .= "Uw file is niet een image. ";
+        $uploadOk = 0;
+    }
+
+    if ($_FILES["image"]["size"] > 500000) {
+        $error .= "Sorry, uw file is te groot. ";
+        $uploadOk = 0;
+    }
+
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif") {
+        $error .= "Sorry, alleen JPG, JPEG, PNG & GIF files mogen geupload worden. ";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        $error .= "Sorry, uw file is niet upgeload.";
+    } else {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        } else {
+            $error .= "Sorry, er is een fout opgetreden tijdens het uploaden.";
+        }
+    }
+    if ($uploadOk == 1) {
+        $sql = '
+    INSERT INTO `knowitall_posts` (`ID`, `Title`, `Post`, `Date`, `Status`, `USERID`, `Image`) VALUES (NULL, ?, ? , ? , ? , ?, ?)
+    ';
+        $statement = $conn->prepare($sql);
+        $statement->bind_param('ssssss', $titel, $message, $Date, $status, $UID, $target_file);
+        if (!$statement->execute()) {
+            $welcome.= "<div>Failed to add user error: (" . $conn->errno . ") " . $conn->error."</div>";
+        } else {
+            $welcome .= "<div>uw weetje word spoedig door ons team gereviewd.</div>";
+        }
     }
 }
-
 
 
 
@@ -113,6 +143,7 @@ if (isset($_POST['submitPost'])) {
 
 <?=$header?>
 <?=$welcome?>
+<?=$error . '</p>'?>
 <?php include 'footer.php' ?>
 </body>
 </html>

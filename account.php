@@ -76,7 +76,7 @@ HTML;
         ">
         <form method="post" enctype="multipart/form-data" action="">
           <input class="accbutton" required type="file" name="picture">
-          <input class="myButton accbutton" type="submit" name="submit" value="Verander foto">
+          <input class="myButton accbutton accbut" type="submit" name="submit" value="Verander foto">
         </form>
         ' . $error . '</p>' . '
         <p class="accountuser">' . $account[0]['username'] . '</p>

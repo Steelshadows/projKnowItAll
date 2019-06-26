@@ -31,7 +31,7 @@ if (isset($_POST['submitsignup'])) {
             $user = $row['username'];
         }
 
-        $query = "INSERT INTO `knowitall_account` (`bio`, `avatar`, `USERID`) VALUES ('U kunt hier iets over uwzelf typen', 'img/default-avatar.png', $UID)";
+        $query = "INSERT INTO `knowitall_account` (`bio`, `avatar`, `USERID`) VALUES ('U kunt hier iets over uwzelf typen', 'img/userpics/default-avatar.png', $UID)";
         $conn->query($query);
 
         $_SESSION['user_ID'] = $UID;
