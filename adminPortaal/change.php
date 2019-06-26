@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
         }
 
         $results .= "
-    <div class='flexitem' id='".$row['ID']."'>
+    <div class='flexitem itembackground' id='".$row['ID']."'>
         <p>Titel: " . $row["Title"]. "</p>
         <p>Author: " . $usname. "</p>
         <p>Post: " . $row["Post"]. "</p>
@@ -203,12 +203,12 @@ $PostList .= '</div>';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
-            padding: 0 10%;
-        }
         .flexing{
             display: inline-flex;
             flex-wrap: wrap;
+        }
+        .weetje-results{
+            padding: 0 10%;
         }
 
 

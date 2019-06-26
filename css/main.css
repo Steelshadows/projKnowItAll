@@ -29,6 +29,15 @@ input{
     left: 50%;
 }
 
+.loginrow{
+    margin-bottom: 20px !important;
+}
+
+.anderelogin{
+    width: 100% !important;
+    text-align: center;
+}
+
 .main-heading {
     text-align: center;
 }
@@ -652,6 +661,11 @@ input{
     padding: 20px;
     margin: 10px;
     border: solid 1px black;
+}
+
+.itembackground{
+    border: 1px solid #d7d7db;
+    background-color: whitesmoke;
 }
 
 /* Einde admin page css -------------------------------------------------------------------- */
