@@ -77,7 +77,11 @@ if (isset($_SESSION['user_ID'])) {
 			</div>
 		</div>
 	</div>
-</div>';
+</div>
+<div class="anderelogin">
+    <p class="ding">Heb je al een account? <a href="login.php">Log hier in</a>.</p>
+</div>
+';
 }
 $message .= "</div>";
 

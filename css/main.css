@@ -29,6 +29,15 @@ input{
     left: 50%;
 }
 
+.loginrow{
+    margin-bottom: 20px !important;
+}
+
+.anderelogin{
+    width: 100% !important;
+    text-align: center;
+}
+
 .main-heading {
     text-align: center;
 }
