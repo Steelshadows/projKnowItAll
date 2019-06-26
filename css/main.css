@@ -23,7 +23,7 @@ input{
 
 /*eind Algemene styling  */
 /*begin Home styling */
-.homemessage{
+.homemessage {
     position: relative;
     top: 60px;
     left: 50%;
@@ -33,7 +33,7 @@ input{
     text-align: center;
 }
 
-.homecontainer{
+.homecontainer {
     margin-top: 60px;
     width: 100vw;
     height: 70vh;
@@ -42,7 +42,7 @@ input{
     justify-content: center;
 }
 
-.homecontainertop{
+.homecontainertop {
     margin-top: 80px;
     width: 100vw;
     display: flex;
@@ -50,12 +50,12 @@ input{
     justify-content: center;
 }
 
-.relative{
+.relative {
     position: relative;
     width: 45%;
 }
 
-.relative2{
+.relative2 {
     position: relative;
     color: black;
     width: 25%;
@@ -342,28 +342,22 @@ input{
 
 /*weetjes pagina*/
 
-.weetjecontainer {
-  width: 1268px;
-  margin: 70px auto;
+.weetje-container {
+    margin-top: 100px;
 }
 
 .weetje-item {
-  position: relative;
-  width: 700px;
-  height: 150px;
-  border: 1px solid black;
+    -webkit-box-shadow: 7px 4px 36px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 4px 36px -8px rgba(0,0,0,0.75);
+    box-shadow: 7px 4px 36px -8px rgba(0,0,0,0.75);
+
+    padding: 5px;
 }
 
-.title-weetje {
-  position: absolute;
-  left: 180px;
+.seperator {
+    border-bottom: 1px solid crimson;
 }
 
-.content-weetje {
-  position: absolute;
-  top: 40px;
-  left: 160px;
-}
 .inputdate{
     position: relative;
     top:50px;
