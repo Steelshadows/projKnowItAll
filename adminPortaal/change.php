@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
         }
 
         $results .= "
-    <div class='flexitem' id='".$row['ID']."'>
+    <div class='flexitem itembackground' id='".$row['ID']."'>
         <p>Titel: " . $row["Title"]. "</p>
         <p>Author: " . $usname. "</p>
         <p>Post: " . $row["Post"]. "</p>

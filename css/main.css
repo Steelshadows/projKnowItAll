@@ -657,4 +657,9 @@ input{
     border: solid 1px black;
 }
 
+.itembackground{
+    border: 1px solid #d7d7db;
+    background-color: whitesmoke;
+}
+
 /* Einde admin page css -------------------------------------------------------------------- */
