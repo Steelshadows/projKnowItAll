@@ -25,6 +25,7 @@ if ($stmt->execute()) {
     $result = $stmt->get_result();
     $PostList = null;
     $Posterror = "<div class='container weetje-container'>Geen weetjes gevonden voor " . $searchDate . "</div>";
+    $i = 0;
     while ($row = $result->fetch_assoc()) {
         $Posterror = null;
 
@@ -43,7 +44,7 @@ if ($stmt->execute()) {
                         <div class="weetje-item">
                             <div class="">
                                     <h4>Titel: $title </h4>
-                                    <div class="float-right"><img id="myImg" src="$image" alt="X" style="width:100px;max-width:300px"></div>
+                                    <div class="float-right"><img id="myImg" src="$image" alt="X" style="width:100px;max-width:300px" onclick="modale(myModal$i, mySpan$i)"></div>
                                     <div class="seperator"><small>Ingestuurd door: $username</small></div>
                             </div>
 
@@ -54,22 +55,21 @@ if ($stmt->execute()) {
                         </div>
                     </div>
                     <!-- The Modal -->
-                    <div id="myModal" class="modal">
+                    <div id="myModal$i" class="modal">
 
                       <!-- The Close Button -->
-                      <span class="close">&times;</span>
+                      <span id="mySpan$i" class="close">&times;</span>
 
                       <!-- Modal Content (The Image) -->
-                      <img class="modal-content" id="img01">
+                      <img class="modal-content" id="img01" src="$image">
 
                       <!-- Modal Caption (Image Text) -->
                       <div id="caption"></div>
                     </div>
 
 WEETJE;
+        $i++;
     }
-
-
 
 
     $cal = '
@@ -192,27 +192,7 @@ WEETJE;
 <?=$PostList?>
 <?php include "footer.php";?>
 
-<script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById("myImg");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    img.onclick = function(){
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-    }
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+<script src="script/script.js">>
 </script>
 </body>
 </html>

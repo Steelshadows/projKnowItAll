@@ -14,7 +14,6 @@ function validatePassword(){
 
 function modale(modal, span) {
   modal.style.display = "block";
-
   span.onclick = function() {
     modal.style.display = "none";
   }
