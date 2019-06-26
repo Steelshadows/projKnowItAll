@@ -80,7 +80,11 @@ if (isset($_SESSION['user_ID'])) {
 			</div>
 		</div>
 	</div>
-</div>';
+</div>
+<div class="anderelogin">
+    <p class="ding">Heb je nog geen account? <a href="signup.php">Meld je hier aan</a>.</p>
+</div>
+';
 }
 
 $message .= '</div>';
