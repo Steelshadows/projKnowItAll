@@ -9,6 +9,16 @@
 include '../conection.php';
 include "admincheck.php";
 
+if (isset($_POST['submit_delete'])) {
+    $editPost = $_POST['postID'];
+
+    $sql = "DELETE FROM `knowitall_posts` WHERE `ID` = ? ;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('s', $editPost);
+    if (!$statement->execute()) {
+        echo "er ging iets mis";
+    }
+}
 if (isset($_POST['submit_change'])) {
     $title = $_POST['Title'];
     $Post = $_POST['Post'];
@@ -52,7 +62,7 @@ if ($result->num_rows > 0) {
         }
 
         $results .= "
-    <div class='flexitem' id='".$row['ID']."'>
+    <div class='flexitem itembackground' id='".$row['ID']."'>
         <p>Titel: " . $row["Title"]. "</p>
         <p>Author: " . $usname. "</p>
         <p>Post: " . $row["Post"]. "</p>
@@ -131,6 +141,7 @@ if ($result->num_rows > 0) {
 
         $PostList .= '<div>';
         $PostList .= '<input type="submit" name="submit_change" value="aanpassen">';
+        $PostList .= '<input type="submit" name="submit_delete" value="verwijderen">';
         $PostList .= '<input type="hidden" value="'.$row['ID'].'" name="postID"></div>';
 
         $PostList .= '
@@ -203,12 +214,12 @@ $PostList .= '</div>';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
-            padding: 0 10%;
-        }
         .flexing{
             display: inline-flex;
             flex-wrap: wrap;
+        }
+        .weetje-results{
+            padding: 0 10%;
         }
 
 

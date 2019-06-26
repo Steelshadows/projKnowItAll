@@ -8,7 +8,7 @@ if (isset($_SESSION['user_ID'])) {
         $username = $row['username'];
     }
 }
-$error = '<p>';
+$error = '<p class="posterror">';
 $anonypostSQL='SELECT `value` FROM `knowitall_adminsettings` WHERE `type` = \'allowAnonymousPosting\'';
 $anonypost = '';
 $welcome = "<p><a href='login/login.php'>log in</a> om te posten</p>";
@@ -18,9 +18,9 @@ while ($row = $result->fetch_assoc()) {
 }
 if ($anonypost == 'True'||isset($username)) {
     if (isset($username)) {
-        $welcome = '<p>hallo '. $username. '</p>';
+        $welcome = '<p class="postwelcome">hallo '. $username. '</p>';
     } else {
-        $welcome = '<p>hallo ANONYMOUS</p>';
+        $welcome = '<p class="postwelcome">hallo ANONYMOUS</p>';
     }
     $welcome .= '
 <div class="post-section">
@@ -103,9 +103,9 @@ if (isset($_POST['submitPost'])) {
         $statement = $conn->prepare($sql);
         $statement->bind_param('ssssss', $titel, $message, $Date, $status, $UID, $target_file);
         if (!$statement->execute()) {
-            $welcome.= "<div>Failed to add user error: (" . $conn->errno . ") " . $conn->error."</div>";
+            $welcome.= '<div class="posterr">Kan post niet uploaden: (" . $conn->errno . ") " . $conn->error."</div>';
         } else {
-            $welcome .= "<div>uw weetje word spoedig door ons team gereviewd.</div>";
+            $welcome .= '<div class="posterr">uw weetje word spoedig door ons team gereviewd.</div>';
         }
     }
 }
