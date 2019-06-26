@@ -203,12 +203,12 @@ $PostList .= '</div>';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
-            padding: 0 10%;
-        }
         .flexing{
             display: inline-flex;
             flex-wrap: wrap;
+        }
+        .weetje-results{
+            padding: 0 10%;
         }
 
 
