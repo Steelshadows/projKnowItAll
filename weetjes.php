@@ -7,7 +7,7 @@
  */
 include 'header.php';
 
-$PostList = "";
+
 $searchDate = date("Y-m-d");
 if (isset($_GET['date'])) {
     $searchDate = date("Y-m-d", strtotime($_GET['date']));
@@ -23,20 +23,22 @@ $stmt = $conn->prepare($usernameSQL);
 $stmt->bind_param('s', $searchDate);
 if ($stmt->execute()) {
     $result = $stmt->get_result();
-    $PostList = '<div class="weetjecontainer">';
+    $PostList = "<div class='container weetje-container'>Geen weetjes gevonden voor " . $searchDate . "</div>";
     while ($row = $result->fetch_assoc()) {
-        if ($row['username'] != null) {
-            $username = $row['username'];
-        } else {
-            $username = 'ANONYMOUS';
-        }
-        $title = $row["Title"];
-        $date = $row["Date"];
-        $content = $row["Post"];
-        $image = "img/userpics/default-avatar.png";
 
+            $PostList = null;
 
-        $PostList .= <<< WEETJE
+            if ($row['username'] != null) {
+                $username = $row['username'];
+            } else {
+                $username = 'ANONYMOUS';
+            }
+            $title = $row["Title"];
+            $date = $row["Date"];
+            $content = $row["Post"];
+            $image = $row["Image"];
+
+            $PostList .= <<< WEETJE
                     <div class="container weetje-container">
                         <div class="weetje-item">
                             <div class="">
@@ -66,21 +68,11 @@ if ($stmt->execute()) {
 
 WEETJE;
 
-//        $PostList .= '<div class="weetje-item">';
+        }
 
-//
-//        $PostList .= '<div class="content-weetje">Datum: ';
-//        $PostList .= $row['Date'];
-//        $PostList .= '<br>';
-//        $PostList .= $row['Post'];
-//        $PostList .= '</div>';
-//
-//        $PostList .= '</div>';
-    }
-    if (empty($PostList)) {
-        $PostList .= "er zijn geen weetjes gevonden voor .date('m-d-Y', strtotime($searchDate)";
-}
-$PostList .= '</div>';
+
+
+
 $cal = '
 <input class="inputdate" type="date" value="'.$searchDate.'" onchange="
     window.location = \'weetjes.php?date=\'+this.value
