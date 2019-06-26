@@ -523,7 +523,6 @@ input{
 
 .accountstatcont{
   width: 90%;
-  height: 235px;
 }
 
 .accountstatus{
@@ -535,6 +534,10 @@ input{
 
 .accbutton{
   display: block;
+}
+
+.accbut{
+  width: 21.5%;
 }
 
 .accedit{
