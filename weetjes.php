@@ -13,7 +13,7 @@ if (isset($_GET['date'])) {
     $searchDate = date("Y-m-d", strtotime($_GET['date']));
 }
 $usernameSQL='
-SELECT `Title`,`Post`,`Date`,`knowitall_gebruikers`.`username` AS \'username\'
+SELECT `Title`,`Post`,`Date`, `Image`, `knowitall_gebruikers`.`username` AS \'username\'
 FROM `knowitall_posts`
 LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
