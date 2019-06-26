@@ -1,40 +1,46 @@
 <?php
 
 include 'header.php';
-function singleQuery($query, $arr, $param, $conn)
-{
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param($param, ... $arr);
-    $stmt->execute();
-    $stmt->close();
-}
+include 'includes/sqlfuncties.php';
+$error = '<p>';
+if (isset($_POST["submit"])) {
+    $target_dir = "img/userpics/";
+    $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-function resultQuery($query, $arr, $param, $conn)
-{
-    if (isset($arr) && isset($param)) {
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param($param, ... $arr);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    $check = getimagesize($_FILES["picture"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
     } else {
-        $stmt = $conn->query($query);
-        $result = $stmt;
+        $error .= "Uw file is niet een image. ";
+        $uploadOk = 0;
     }
-    if ($result->num_rows == 0) {
-        session_destroy();
-    }
-    $row = [];
 
-    while ($rows = $result->fetch_assoc()) {
-        array_push($row, $rows);
+    if ($_FILES["picture"]["size"] > 500000) {
+        $error .= "Sorry, uw file is te groot. ";
+        $uploadOk = 0;
     }
-    $stmt->close();
-    return $row;
+
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif") {
+        $error .= "Sorry, alleen JPG, JPEG, PNG & GIF files mogen geupload worden. ";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        $error .= "Sorry, uw file is niet upgeload.";
+    } else {
+        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+            $_SESSION['picture'] = $target_file;
+            header("location: accedit.php");
+        } else {
+            $error .= "Sorry, er is een fout opgetreden tijdens het uploaden.";
+        }
+    }
 }
-
 if (isset($_SESSION['sessionid']) && $_SESSION['sessionid'] == session_id()) {
     $user = $_SESSION['username'];
-    var_dump($user);
     $sql = "SELECT bio, avatar, username FROM `knowitall_account` INNER JOIN `knowitall_gebruikers` ON knowitall_account.USERID = knowitall_gebruikers.USERID WHERE `username` = '$user'";
     $account = resultQuery($sql, null, null, $conn);
     $sql = "SELECT Title, Post, Post_Date, Status, Approval_Date FROM `knowitall_posts` INNER JOIN `knowitall_gebruikers` ON knowitall_posts.USERID = knowitall_gebruikers.USERID WHERE `username` = '$user'";
@@ -68,8 +74,14 @@ HTML;
         <img class="accountimg" src="' . $account[0]['avatar'] . '
 
         ">
+        <form method="post" enctype="multipart/form-data" action="">
+          <input class="accbutton" required type="file" name="picture">
+          <input class="myButton accbutton" type="submit" name="submit" value="Verander foto">
+        </form>
+        ' . $error . '</p>' . '
         <p class="accountuser">' . $account[0]['username'] . '</p>
-        <p class="accountbio">' . $account[0]['bio'] .'</p>
+        <p class="accountbio" id="accbio">' . $account[0]['bio'] .'</p>
+        <button type="button" class="myButton accedit" onclick="createModal(accbio)">Verander bio</button>
       </div>
       <div class="accountweetjes">
         <p class="accountweetjestatus">Weetjes status:</p>
@@ -93,10 +105,12 @@ HTML;
 } else {
     header("location: login.php");
 }
+$js = '<script src="script/script.js"></script>';
 echo $html;
 echo $header;
 echo $html2;
 echo $stats;
 echo $html3;
+echo $js;
 include "footer.php";
 echo $html4;

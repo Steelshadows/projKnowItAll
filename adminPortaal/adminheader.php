@@ -18,7 +18,7 @@ $adminpage = null;
 $uitloggen = null;
 $inloggen = '<a class="dropdown-item" href="../login.php">Login</a>
              <a class="dropdown-item" href="../signup.php">Registreren</a>';
-if ($adminpriv == 1){
+if ($adminpriv == 1) {
     $adminpage = '<a class="dropdown-item" href="../adminPortaal/change.php">Admin Portaal</a>';
 }
 if (isset($_SESSION['user_ID'])) {
