@@ -5,34 +5,36 @@
  * Date: 6/12/2019
  * Time: 2:34 PM
  */
+ session_start();
 include '../conection.php';
 include "admincheck.php";
 
-if(isset($_POST['submit_change'])){
+if (isset($_POST['submit_change'])) {
     $title = $_POST['Title'];
     $Post = $_POST['Post'];
     $Status = $_POST['Status'];
     $editPost = $_POST['postID'];
-    if (isset($Status)){
+    if (isset($Status)) {
         $editsql = "UPDATE `knowitall_posts` SET `Title` = ? , `Post` = ? , `Status` = ? WHERE `knowitall_posts`.`ID` = ?";
         $statement = $conn->prepare($editsql);
-        $statement->bind_param('ssss',$title,$Post,$Status,$editPost);
-        if(!$statement->execute()){
+        $statement->bind_param('ssss', $title, $Post, $Status, $editPost);
+        if (!$statement->execute()) {
             echo "er ging iets mis";
         }
+    } else {
+        echo "status niet correct";
     }
-    else{ echo "status niet correct";}
 }
 $usernameSQL='
-SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\' 
-FROM `knowitall_posts` 
-LEFT JOIN `knowitall_gebruikers` 
+SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\'
+FROM `knowitall_posts`
+LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
-ORDER BY 
+ORDER BY
     `Status` = \'Denied\',
     `Status` = \'Approved\',
     `Status` = \'Pending\'
-    ASC 
+    ASC
 ';
 $results = '';
 
@@ -42,12 +44,10 @@ if ($result->num_rows > 0) {
     $results = "<div class='flexing'>";
     $modals = '';
     $PostList = '<div>';
-    while($row = $result->fetch_assoc()) {
-
-        if($row['username']!=NULL){
+    while ($row = $result->fetch_assoc()) {
+        if ($row['username']!=null) {
             $usname = $row['username'];
-        }
-        else {
+        } else {
             $usname = 'ANONYMOUS';
         }
 
@@ -61,33 +61,30 @@ if ($result->num_rows > 0) {
 
 
 
-        if ($row['Status'] == 'Pending'){
+        if ($row['Status'] == 'Pending') {
             $status = '
     <select name="Status">
         <option value="Approved">Approved</option>
         <option value="Pending" disabled selected>Pending</option>
         <option value="Denied">Denied</option>
     </select>';
-        }
-        else if ($row['Status'] == 'Denied'){
+        } elseif ($row['Status'] == 'Denied') {
             $status = '
     <select name="Status">
         <option value="Approved">Approved</option>
         <option disabled value="Pending">Pending</option>
         <option value="Denied" selected>Denied</option>
     </select>';
-        }
-        else if ($row['Status'] == 'Approved'){
+        } elseif ($row['Status'] == 'Approved') {
             $status = '
     <select name="Status">
         <option value="Approved" selected>Approved</option>
         <option disabled value="Pending">Pending</option>
         <option value="Denied">Denied</option>
     </select>';
-        }
-        else{
+        } else {
             $status = '
-    
+
     <select name="Status" required>
         <option disabled selected>ERROR_'.$row['Status'].'</option>
         <option value="Approved">Approved</option>
@@ -152,7 +149,7 @@ var btn'.$row['ID'].' = document.getElementById("'.$row['ID'].'");
 // Get the <span> element that closes the modal
 var span'.$row['ID'].' = document.getElementById("close'.$row['ID'].'");
 
-// When the user clicks on the button, open the modal 
+// When the user clicks on the button, open the modal
 btn'.$row['ID'].'.onclick = function() {
   modal'.$row['ID'].'.style.display = "block";
 }
@@ -168,12 +165,12 @@ window.onclick = function(event) {
     modal'.$row['ID'].'.style.display = "none";
   }
 }
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         ';
     }
     $results .= "</div>";
@@ -195,8 +192,14 @@ $PostList .= '</div>';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/sticky-footer.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
@@ -206,14 +209,6 @@ $PostList .= '</div>';
         .flexing{
             display: inline-flex;
             flex-wrap: wrap;
-        }
-        .flexitem{
-            min-width: 175px;
-            width: 20%;
-            height: 100px;
-            border: 2px black solid;
-            padding: 10px;
-            /*flex-grow: 1;*/
         }
 
 
@@ -268,8 +263,17 @@ $PostList .= '</div>';
     </style>
 </head>
 <body>
-<?=$results?>
-<?=$PostList?>
-<?=$modalsscript?>
+<?php include "adminheader.php"; ?>
+<div class="headerspace">
+
+</div>
+
+<div class="weetje-results">
+    <p>Weetjes van gebruikers</p>
+    <?=$results?>
+    <?=$PostList?>
+    <?=$modalsscript?>
+</div>
+<?php include "adminfooter.php"; ?>
 </body>
 </html>

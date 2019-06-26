@@ -5,26 +5,26 @@
  * Date: 6/6/2019
  * Time: 09:17 AM
  */
-include 'conection.php';
+include 'header.php';
 
 $searchDate = date("Y-m-d");
-if(isset($_GET['date'])){
+if (isset($_GET['date'])) {
     $searchDate = date("Y-m-d", strtotime($_GET['date']));
 }
 $usernameSQL='
-SELECT `Title`,`Post`,`Date`,`knowitall_gebruikers`.`username` AS \'username\' 
-FROM `knowitall_posts` 
-LEFT JOIN `knowitall_gebruikers` 
+SELECT `Title`,`Post`,`Date`,`knowitall_gebruikers`.`username` AS \'username\'
+FROM `knowitall_posts`
+LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
 WHERE `Status` = \'Approved\' AND `Date` = ?
 ';
 $stmt = $conn->prepare($usernameSQL);
-$stmt->bind_param('s',$searchDate);
-if($stmt->execute()) {
+$stmt->bind_param('s', $searchDate);
+if ($stmt->execute()) {
     $result = $stmt->get_result();
     $PostList = '<div class="weetjecontainer">';
     while ($row = $result->fetch_assoc()) {
-        if ($row['username'] != NULL) {
+        if ($row['username'] != null) {
             $usname = $row['username'];
         } else {
             $usname = 'ANONYMOUS';
@@ -54,7 +54,7 @@ $cal = '
     window.location = \'weetjes.php?date=\'+this.value
 " format="Y-m-d">
 ';
-if($PostList == '<div class="weetjecontainer"></div>'){
+if ($PostList == '<div class="weetjecontainer"></div>') {
     $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';
 }
 ?>
@@ -80,7 +80,7 @@ if($PostList == '<div class="weetjecontainer"></div>'){
 </head>
 <body>
 
-<?php include "header.php";?>
+<?=$header?>
 <?=$cal?>
 <?=$PostList?>
 <?php include "footer.php";?>

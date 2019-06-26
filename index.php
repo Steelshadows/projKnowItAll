@@ -5,7 +5,7 @@
  * Date: 5/22/2019
  * Time: 02:24 PM
  */
- session_start();
+ include 'header.php';
  $message = null;
  if (isset($_SESSION['user_ID'])) {
      $message = '<p class="homemessage">Welkom, ' . $_SESSION['username'] . '</p>';
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-<?php include "header.php"; ?>
+<?=$header?>
 <?=$message?>
     <main>
         <div class="homecontainertop">
@@ -99,21 +99,30 @@
             <div class="recentweetjes">
                 <div class="homecontcolumn">
                     <div class="homecontrow">
-                        <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                        <p>Titel</p>
-                        <p class="homeweetje">Content</p>
+                        <div class="top1">
+                            <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                        </div>
+                        <div class="top2">
+                            <h4>Halo komt naar PC.</h4>
+                            <p class="top2tekst">Halo .</p>
+                        </div>
                     </div>
                     <div class="homeline2"></div>
                     <div class="homecontrow">
-                        <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                        <p>Titel</p>
-                        <p class="homeweetje">Content</p>
+                        <div class="top1">
+                            <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                        </div>
+                        <div class="top2">
+
+                        </div>
                     </div>
                     <div class="homeline2"></div>
                     <div class="homecontrow">
-                        <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                        <p>Titel</p>
-                        <p class="homeweetje">Content</p>
+                        <div class="top1">
+                            <img class="homeimgbot" alt="img" src="img/placeholder.png">
+                        </div>
+                        <div class="top2">
+                        </div>
                     </div>
                     <div class="homeline2"></div>
                 </div>
