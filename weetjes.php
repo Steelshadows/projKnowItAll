@@ -23,9 +23,10 @@ $stmt = $conn->prepare($usernameSQL);
 $stmt->bind_param('s', $searchDate);
 if ($stmt->execute()) {
     $result = $stmt->get_result();
-    $PostList = "<div class='container weetje-container'>Geen weetjes gevonden voor " . $searchDate . "</div>";
+    $PostList = null;
+    $Posterror = "<div class='container weetje-container'>Geen weetjes gevonden voor " . $searchDate . "</div>";
     while ($row = $result->fetch_assoc()) {
-        $PostList = null;
+        $Posterror = null;
 
         if ($row['username'] != null) {
             $username = $row['username'];
@@ -187,6 +188,7 @@ WEETJE;
 
 <?=$header?>
 <?=$cal?>
+<?=$Posterror?>
 <?=$PostList?>
 <?php include "footer.php";?>
 
