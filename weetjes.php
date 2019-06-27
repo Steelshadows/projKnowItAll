@@ -10,16 +10,17 @@ include 'header.php';
 $searchDate = date("Y-m-d");
 if (isset($_GET['date'])) {
     $searchDate = date("Y-m-d", strtotime($_GET['date']));
+    $sqldate = '%-'.date("m-d", strtotime($_GET['date']));
 }
 $usernameSQL='
 SELECT `Title`,`Post`,`Date`, `Image`, `knowitall_gebruikers`.`username` AS \'username\'
 FROM `knowitall_posts`
 LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
-WHERE `Status` = \'Approved\' AND `Date` = ?
+WHERE `Status` = \'Approved\' AND `Date` LIKE ?
 ';
 $stmt = $conn->prepare($usernameSQL);
-$stmt->bind_param('s', $searchDate);
+$stmt->bind_param('s', $sqldate);
 if ($stmt->execute()) {
     $result = $stmt->get_result();
     $PostList = null;
