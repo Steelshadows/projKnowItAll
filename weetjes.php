@@ -7,7 +7,6 @@
  */
 include 'header.php';
 
-
 $searchDate = date("Y-m-d");
 if (isset($_GET['date'])) {
     $searchDate = date("Y-m-d", strtotime($_GET['date']));
@@ -40,47 +39,43 @@ if ($stmt->execute()) {
         $image = $row["Image"];
 
         $PostList .= <<< WEETJE
-                    <div class="container weetje-container">
-                        <div class="weetje-item">
-                            <div class="">
-                                    <h4>Titel: $title </h4>
-                                    <div class="float-right"><img id="myImg" src="$image" alt="X" style="width:100px;max-width:300px" onclick="modale(myModal$i, mySpan$i)"></div>
-                                    <div class="seperator"><small>Ingestuurd door: $username</small></div>
-                            </div>
+<div class="container weetje-container">
+    <div class="homecontrow">
+        <div class="top1">
+            <img class="homeimgbot float-right" id="myImg" alt="img" src="$image" onclick="modale(myModal$i, mySpan$i)">
+        </div>
+    <div class="top2">
+        <h4>$title</h4>
+        <div>$content</div>
+        <div class="seperator"><small>Ingestuurd door: $username</small></div>
+    </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal$i" class="modal">
 
-                            <div class="content-weetje">
-                                <div class="post">$content</div>
+        <!-- The Close Button -->
+        <span id="mySpan$i" class="close">&times;</span>
 
-                            </div>
-                        </div>
-                    </div>
-                    <!-- The Modal -->
-                    <div id="myModal$i" class="modal">
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01" src="$image">
 
-                      <!-- The Close Button -->
-                      <span id="mySpan$i" class="close">&times;</span>
-
-                      <!-- Modal Content (The Image) -->
-                      <img class="modal-content" id="img01" src="$image">
-
-                      <!-- Modal Caption (Image Text) -->
-                      <div id="caption"></div>
-                    </div>
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
+</div>
 
 WEETJE;
         $i++;
     }
-
-
-    $cal = '
+}
+$PostList .= '</div>';
+$cal = '
 <input class="inputdate" type="date" value="'.$searchDate.'" onchange="
     window.location = \'weetjes.php?date=\'+this.value
 " format="Y-m-d">
 ';
-
-
-    //if ($PostList == '<div class="weetjecontainer"></div>') {
-//    $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';
+if ($PostList == '<div class="weetjecontainer"></div>') {
+    $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';
 }
 ?>
 
@@ -101,7 +96,7 @@ WEETJE;
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <title>Document</title>
+    <title>KnowItAll</title>
     <style>
         /* Style the Image Used to Trigger the Modal */
         #myImg {

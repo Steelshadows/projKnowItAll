@@ -5,11 +5,99 @@
  * Date: 5/22/2019
  * Time: 02:24 PM
  */
+
+$endresulttop = null;
+$endresulttop2 = null;
+$endresult = null;
+$topweetjes = null;
+
  include 'header.php';
  $message = null;
  if (isset($_SESSION['user_ID'])) {
      $message = '<p class="homemessage">Welkom, ' . $_SESSION['username'] . '</p>';
  }
+
+
+
+
+
+$sql = "SELECT ID, Title, Post, Date, Status, USERID, Post_Date, Image FROM knowitall_posts WHERE `Approval_Date` = '2019-06-27' LIMIT 1";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+ $endresulttop = '
+<div class="relative">
+    <img class="homeimg" alt="img1" src="'.$row["Image"].'">
+    <div class="homeimg1tekst">'.$row["Title"].' - '. $row["Post"].'</div>
+</div>
+';
+}
+}
+
+$sql2 = "SELECT ID, Title, Post, Date, Status, USERID, Post_Date, Image FROM knowitall_posts WHERE `Approval_Date` IS null AND `Status` = 'Approved' ORDER BY RAND() LIMIT 1";
+$result = $conn->query($sql2);
+
+if ($result->num_rows > 0) {
+// output data of each row
+    while($row = $result->fetch_assoc()) {
+        $endresulttop .= '
+<div class="relative2">
+    <img class="homeimg" alt="img2" src="'.$row["Image"].'">
+    <div class="homeimg2tekst">'.$row["Title"].'</div>
+</div>
+';
+    }
+}
+
+
+$sql3 = 'SELECT `Title`,`Post`,`Date`, `Image`, `knowitall_gebruikers`.`username` AS \'username\'
+FROM `knowitall_posts`
+LEFT JOIN `knowitall_gebruikers`
+ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
+WHERE `Status` = \'Approved\' ORDER BY RAND() LIMIT 3';
+$result = $conn->query($sql3);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $endresult .= '
+<div class="homecontrow">
+    <div class="top1">
+        <img class="homeimgbot" alt="img" src="'.$row["Image"].'">
+    </div>
+    <div class="top2">
+        <h4>'.$row["Title"]. '</h4>
+        <div>'.$row["Post"]. '</div>
+        <div class="seperator"><small>Ingestuurd door: '.$row["username"].' </small></div>
+    </div>
+</div>
+<div class="homeline2"></div>
+';
+
+    }
+}
+
+$sql4 = "SELECT ID, Title, Post, Date, Status, USERID, Post_Date, Image FROM knowitall_posts WHERE `Status` = 'Approved' LIMIT 10";
+$result = $conn->query($sql4);
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $topweetjes .= '
+                    <div class="space">'.$row["Title"]. ' </div>
+';
+
+    }
+}
+
+
+
+
+$conn->close();
 ?>
 
 <!doctype html>
@@ -29,7 +117,7 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <title>Document</title>
+    <title>KnowItAll</title>
 </head>
 <body>
 
@@ -37,14 +125,8 @@
 <?=$message?>
     <main>
         <div class="homecontainertop">
-          <div class="relative">
-              <img class="homeimg" alt="img1" src="img/frontpage.png">
-              <div class="homeimg1tekst">Het grootste gaming event van de wereld. E3 alle nieuwste games en game gerelateerde nieuws op een rijtje.</div>
-          </div>
-          <div class="relative2">
-              <img class="homeimg" alt="img2" src="img/frontpage2.png">
-              <div class="homeimg2tekst">Halo voor het eerst naar de pc na 18 jaar.</div>
-          </div>
+            <?=$endresulttop?>
+            <?=$endresulttop2?>
         </div>
         <div class="homecontainer">
             <div class="div1">
@@ -56,16 +138,7 @@
             <div class="topweetjes">
                 <p>Top 10 Weetjes</p>
                 <div class="topweetjecontainer">
-                    <div class="space">#1: </div>
-                    <div class="space">#2: </div>
-                    <div class="space">#3: </div>
-                    <div class="space">#4: </div>
-                    <div class="space">#5: </div>
-                    <div class="space">#6: </div>
-                    <div class="space">#7: </div>
-                    <div class="space">#8: </div>
-                    <div class="space">#9: </div>
-                    <div class="space">#10: Halo naar pc mini tekst. </div>
+                <?=$topweetjes?>
                 </div>
             </div>
             <div class="resp">
@@ -98,33 +171,7 @@
             <p class="homep">Recente weetjes</p>
             <div class="recentweetjes">
                 <div class="homecontcolumn">
-                    <div class="homecontrow">
-                        <div class="top1">
-                            <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                        </div>
-                        <div class="top2">
-                            <h4>Halo komt naar PC.</h4>
-                            <p class="top2tekst">Halo .</p>
-                        </div>
-                    </div>
-                    <div class="homeline2"></div>
-                    <div class="homecontrow">
-                        <div class="top1">
-                            <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                        </div>
-                        <div class="top2">
-
-                        </div>
-                    </div>
-                    <div class="homeline2"></div>
-                    <div class="homecontrow">
-                        <div class="top1">
-                            <img class="homeimgbot" alt="img" src="img/placeholder.png">
-                        </div>
-                        <div class="top2">
-                        </div>
-                    </div>
-                    <div class="homeline2"></div>
+                        <?=$endresult?>
                 </div>
             </div>
 
