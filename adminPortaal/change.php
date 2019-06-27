@@ -36,7 +36,7 @@ if (isset($_POST['submit_change'])) {
     }
 }
 $usernameSQL='
-SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\'
+SELECT `ID`,`Title`,`Post`,`Status`, `Image`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\'
 FROM `knowitall_posts`
 LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
@@ -67,6 +67,7 @@ if ($result->num_rows > 0) {
         <p>Author: " . $usname. "</p>
         <p>Post: " . $row["Post"]. "</p>
         <p>Status: " . $row["Status"]. "</p>
+        <p>Foto: <img class='adminfoto' src='" . '../' . $row["Image"]. "' alt='img'> </p>
     </div>";
 
 
