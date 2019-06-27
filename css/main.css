@@ -451,6 +451,25 @@ input{
     }
 }
 
+@media only screen and (max-width: 820px) {
+    .contact-form{
+        width: auto;
+        flex-direction: column;
+        width: 100% !important;
+    }
+    .map{
+        flex-direction: column;
+        width: 100% !important;
+
+    }
+    .ctc-container{
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
 @media only screen and (max-width: 750px) {
     .homeimg {
         margin-top: 15px;
