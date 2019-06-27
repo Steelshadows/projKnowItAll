@@ -8,7 +8,21 @@
  session_start();
 include '../conection.php';
 include "admincheck.php";
+if (isset($_POST['submit_home'])) {
+    $date = "2019-06-27";
+    $query = "UPDATE `knowitall_posts` SET `Approval_Date` = NULL WHERE `Approval_Date` = '$date'";
+    $stmt = $conn->query($query);
 
+
+    $editPost = $_POST['postID'];
+
+    $homesql = "UPDATE `knowitall_posts` SET `Approval_Date` = ? WHERE `ID` = ?";
+    $statement = $conn->prepare($homesql);
+    $statement->bind_param('ss', $date, $editPost);
+    if (!$statement->execute()) {
+        echo "er ging iets mis";
+    }
+}
 if (isset($_POST['submit_delete'])) {
     $editPost = $_POST['postID'];
     $sql = "DELETE FROM `knowitall_posts` WHERE `ID` = ? ;";
@@ -35,7 +49,7 @@ if (isset($_POST['submit_change'])) {
     }
 }
 $usernameSQL='
-SELECT `ID`,`Title`,`Post`,`Status`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\'
+SELECT `ID`,`Title`,`Post`,`Status`, `Image`,DATE_FORMAT(`Date`, \'%m-%d\') AS \'Date\',`knowitall_gebruikers`.`USERID`,`knowitall_gebruikers`.`username` AS \'username\'
 FROM `knowitall_posts`
 LEFT JOIN `knowitall_gebruikers`
 ON `knowitall_posts`.`USERID` = `knowitall_gebruikers`.`USERID`
@@ -66,6 +80,7 @@ if ($result->num_rows > 0) {
         <p>Author: " . $usname. "</p>
         <p>Post: " . $row["Post"]. "</p>
         <p>Status: " . $row["Status"]. "</p>
+        <p>Foto: <img class='adminfoto' src='" . '../' . $row["Image"]. "' alt='img'> </p>
     </div>";
 
 
@@ -141,6 +156,7 @@ if ($result->num_rows > 0) {
         $PostList .= '<div>';
         $PostList .= '<input id="aanpassen" type="submit" name="submit_change" value="aanpassen" >';
         $PostList .= '<input id="verweideren" type="submit" name="submit_delete" value="verwijderen" onclick="return confirm(\'weet u zeker dat u dit wil verwijderen?\')">';
+        $PostList .= '<input type="submit" name="submit_home" value="zet op homepagina">';
         $PostList .= '<input type="hidden" value="'.$row['ID'].'" name="postID"></div>';
 
         $PostList .= '
