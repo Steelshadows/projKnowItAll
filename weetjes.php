@@ -69,15 +69,17 @@ WEETJE;
     }
 }
 $PostList .= '</div>';
+$timestamp = mt_rand(1, time());
+$randomDate = date("Y-m-d", $timestamp);
 $cal = '
 <div class="kalender">
-<input class="inputdate" type="date" value="'.$searchDate.'" onchange="
+<input class="inputdate" style="display=\'inline\'" type="date" value="'.$searchDate.'" onchange="
     window.location = \'weetjes.php?date=\'+this.value
-" format="Y-m-d">
+" format="Y-m-d"><a style="display=\'inline\'" href="weetjes.php?date='.$randomDate.'"><img src="img/shuffle.svg" width="15px" style="display=\'inline\'"></a>
 </div>
 ';
 if ($PostList == '<div class="weetjecontainer"></div>') {
-    $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';
+    $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("Y-m-d", strtotime($searchDate)).'</div>';
 }
 ?>
 

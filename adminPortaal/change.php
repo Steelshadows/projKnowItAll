@@ -25,7 +25,6 @@ if (isset($_POST['submit_home'])) {
 }
 if (isset($_POST['submit_delete'])) {
     $editPost = $_POST['postID'];
-
     $sql = "DELETE FROM `knowitall_posts` WHERE `ID` = ? ;";
     $statement = $conn->prepare($sql);
     $statement->bind_param('s', $editPost);
@@ -154,8 +153,8 @@ if ($result->num_rows > 0) {
         $PostList .= '</div>';
 
         $PostList .= '<div>';
-        $PostList .= '<input type="submit" name="submit_change" value="aanpassen">';
-        $PostList .= '<input type="submit" name="submit_delete" value="verwijderen">';
+        $PostList .= '<input id="aanpassen" type="submit" name="submit_change" value="aanpassen" >';
+        $PostList .= '<input id="verweideren" type="submit" name="submit_delete" value="verwijderen" onclick="return confirm(\'weet u zeker dat u dit wil verwijderen?\')">';
         $PostList .= '<input type="submit" name="submit_home" value="zet op homepagina">';
         $PostList .= '<input type="hidden" value="'.$row['ID'].'" name="postID"></div>';
 
