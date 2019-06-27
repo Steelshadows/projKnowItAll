@@ -83,7 +83,7 @@ input{
     background-color: rgba(102, 102, 102, 0.5);
     width: 100%;
     color: white;
-    height: 60px;
+    height: auto;
     padding: 5px;
     font-weight: bold;
     line-height: normal;
