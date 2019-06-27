@@ -42,7 +42,7 @@ if ($stmt->execute()) {
 <div class="container weetje-container">
     <div class="homecontrow">
         <div class="top1">
-            <img class="homeimgbot float-right" id="myImg" alt="img" src="$image" onclick="modale(myModal$i, mySpan$i)">
+            <img class="homeimgbot" id="myImg" alt="img" src="$image" onclick="modale(myModal$i, mySpan$i)">
         </div>
     <div class="top2">
         <h4>$title</h4>
@@ -70,9 +70,11 @@ WEETJE;
 }
 $PostList .= '</div>';
 $cal = '
+<div class="kalender">
 <input class="inputdate" type="date" value="'.$searchDate.'" onchange="
     window.location = \'weetjes.php?date=\'+this.value
 " format="Y-m-d">
+</div>
 ';
 if ($PostList == '<div class="weetjecontainer"></div>') {
     $PostList = '<div class="weetjecontainer">er zijn geen weetjes gevonden voor '.date("m-d-Y", strtotime($searchDate)).'</div>';

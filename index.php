@@ -143,30 +143,10 @@ $conn->close();
             </div>
             <div class="resp">
                 <div class="row">
-                    <div class="column">
-                        <div class="columntext1">
-                            <p>Top 10 Weetjes</p>
-                            <div class="space">#1: </div>
-                            <div class="space">#2: </div>
-                            <div class="space">#3: </div>
-                            <div class="space">#4: </div>
-                            <div class="space">#5: </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="columntext2">
-                            <br>
-                            <div class="space">#6: </div>
-                            <div class="space">#7: </div>
-                            <div class="space">#8: </div>
-                            <div class="space">#9: </div>
-                            <div class="space">#10: Halo naar pc. </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div>
+        <div class="ruimte">
             <div class="homeline"></div>
             <p class="homep">Recente weetjes</p>
             <div class="recentweetjes">
@@ -174,12 +154,11 @@ $conn->close();
                         <?=$endresult?>
                 </div>
             </div>
-
         </div>
-
+        <?php include "footer.php"; ?>
     </main>
 
-<?php include "footer.php"; ?>
+
 
 </body>
 </html>
